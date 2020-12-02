@@ -1,0 +1,21 @@
+.albums {
+  border: 1px solid green;
+  width: 300px;
+  margin: 16px;
+}
+.albums .album-title {
+  max-width: 360px;
+  margin: 0 auto;
+  margin-top: 15px;
+  user-select: none;
+}
+
+button {
+  height: 20px;
+  font-size: 10px;
+  background: #5199e6;
+  color: white;
+  border-radius: 4px;
+  border: 0;
+  margin: 10px 5px;
+}

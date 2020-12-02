@@ -1,0 +1,10 @@
+<div class="albums">
+  <div>Title: {{ album.title }}</div>
+  <div>coverURl: {{ album.coverUrl }}</div>
+  <div>year: {{ album.year }}</div>
+  <div>genre: {{ album.genre }}</div>
+  <div class="album-title">
+    Edit Title: <input #albumTitle [value]="album.title" />
+  </div>
+  <button (click)="onSaveClicked(albumTitle.value)">Save new Title</button>
+</div>
