@@ -5,17 +5,21 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import {AlbumsComponent} from "./albums/albums.component"
 import { MessagesComponent } from './messages/messages.component';
+import { AlbumDetailComponent } from './album-detail/album-detail.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlbumsComponent,
-    MessagesComponent
+    MessagesComponent,
+    AlbumDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,4 @@
 <h1>{{ title }}</h1>
-<div class="courses">
-  <!-- <div *ngFor="let album of albums$ | async">{{ album | json }}</div> -->
-  <app-messages></app-messages>
-  <app-albums
-    *ngFor="let album of albums$ | async"
-    [album]="album"
-    (albumChanged)="save($event)"
-  ></app-albums>
-</div>
+
+<app-albums></app-albums>
+<app-messages></app-messages>

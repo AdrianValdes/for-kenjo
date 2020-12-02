@@ -24,7 +24,7 @@ loadCourses():Observable<Album[]> {
 /******* SAVE METHODS ********/
   //Update a course on the server
 saveAlbum(album:Album){
-  const url = `${this.ROOT_URL}/album/${album._id}`
+   const url = `${this.ROOT_URL}/album/${album._id}`
     // const headers = new HttpHeaders().set("X-Auth", "userId")
     //we need to pass a second argument to put
     return this.http.put(url, album)
