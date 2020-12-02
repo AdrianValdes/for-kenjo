@@ -1,0 +1,8 @@
+.main {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+main a {
+  color: inherit;
+}

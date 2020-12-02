@@ -10,25 +10,33 @@ import {AlbumService} from "../services/album.service"
 })
 export class AlbumsComponent implements OnInit {
   selectedAlbum: Album
-  albums$: Observable<Album[]>
+  albums: Album[]
 
-    @Input()
-    album: Album;
+
 
   constructor(private albumService: AlbumService, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.albums$ = this.albumService.loadCourses()
+   this.getAlbums();
    }
 
-  onSaveClicked(album:Album, title:string) {
-    this.albumService.saveAlbum({...album, title}).subscribe(() => console.log("album saved!") )
-    }
+   getAlbums(): void {
+    this.albumService.getAlbums()
+    .subscribe(albums => this.albums = albums);
+  }
 
-
-  onSelect(album: Album): void {
-    this.selectedAlbum = album;
-    this.messageService.add(`HeroesComponent: Selected hero id=${album.artistId}`);
+  add(title: string): void {
+    title = title.trim();
+    if (!title) { return; }
+    this.albumService.addAlbum({ title } as Album)
+      .subscribe(album => {
+      this.albums.push(album);
+    });
 }
+
+  delete(id: string): void {
+    this.albums = this.albums.filter(album => album._id !== id);
+    this.albumService.deleteAlbum(id).subscribe();
+  }
 
 }

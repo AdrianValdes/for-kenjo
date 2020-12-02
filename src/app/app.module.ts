@@ -7,19 +7,23 @@ import {AlbumsComponent} from "./albums/albums.component"
 import { MessagesComponent } from './messages/messages.component';
 import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { FormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AlbumsComponent,
     MessagesComponent,
-    AlbumDetailComponent
+    AlbumDetailComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

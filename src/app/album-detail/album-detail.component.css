@@ -1,0 +1,12 @@
+label {
+  display: block;
+  margin: 0.5em 0;
+  color: #607d8b;
+  font-weight: bold;
+}
+input {
+  display: block;
+  height: 2em;
+  font-size: 1em;
+  padding-left: 0.4em;
+}

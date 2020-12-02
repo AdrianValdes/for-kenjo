@@ -17,11 +17,21 @@
 }
 
 button {
-  height: 20px;
-  font-size: 10px;
-  background: #5199e6;
-  color: white;
+  background-color: #eee;
+  border: none;
+  padding: 5px 8px;
   border-radius: 4px;
-  border: 0;
-  margin: 10px 5px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+a {
+  color: inherit;
+}
+button.delete {
+  position: relative;
+  left: 19.1rem;
+  top: -1.8rem;
+  background-color: red !important;
+  color: white;
 }

@@ -4,7 +4,9 @@
   <div>
     <label
       >Title: {{ album.title }}
-      <!--    <input [(ngModel)]="album.title" placeholder="title" /> -->
+      <input [(ngModel)]="album.title" placeholder="title" />
     </label>
   </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
 </div>

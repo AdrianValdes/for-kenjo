@@ -1,22 +1,21 @@
 <h2>Your Albums</h2>
 
 <div class="albums">
-  <div
-    class="album-card"
-    *ngFor="let album of albums$ | async"
-    [class.selected]="album === selectedAlbum"
-    (click)="onSelect(album)"
-  >
-    <p>Title: {{ album.title }}</p>
-    <p>Genre: {{ album.genre }}</p>
-    <p>Year: {{ album.year }}</p>
-    <div class="album-title">
-      Edit Title: <input #albumTitle [value]="album.title" />
-    </div>
-    <button (click)="onSaveClicked(album, albumTitle.value)">
-      Save new Title
+  <div class="album-card" *ngFor="let album of albums">
+    <a routerLink="/detail/{{ album._id }}">
+      <p>Title: {{ album.title }}</p>
+    </a>
+    <button class="delete" title="delete album" (click)="delete(album._id)">
+      x
     </button>
   </div>
 </div>
 
-<app-album-detail [album]="selectedAlbum"></app-album-detail>
+<div>
+  <label
+    >Add an album name (not working yet)!!:
+    <input #albumName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(albumName.value); albumName.value = ''">add</button>
+</div>

@@ -1,4 +1,9 @@
-<h1>{{ title }}</h1>
+<nav>
+  <p class="title">{{ title }}</p>
+  <a routerLink="/albums">Albums</a>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a href="">Artists</a>
+</nav>
 
-<app-albums></app-albums>
+<router-outlet></router-outlet>
 <app-messages></app-messages>
