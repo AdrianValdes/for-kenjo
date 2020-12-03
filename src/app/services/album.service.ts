@@ -20,8 +20,8 @@ httpOptions = {
 
   /** Get albums from the server */
 getAlbums():Observable<Album[]> {
-
- return this.http.get<Album[]>(`${this.ROOT_URL}/albums/all`).pipe(
+const url = `${this.ROOT_URL}/albums/all`
+ return this.http.get<Album[]>(url).pipe(
         tap(_ => this.log('fetched albums')),
         catchError(this.handleError<Album[]>('getAlbums', []))
       );

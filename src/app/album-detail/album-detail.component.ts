@@ -19,13 +19,13 @@ export class AlbumDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getAlbum();
   }
-getAlbum(): void {
-  const id = this.route.snapshot.paramMap.get('id');
-  this.albumService.getAlbum(id)
+  getAlbum(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.albumService.getAlbum(id)
     .subscribe(album => this.album = album);
-}
-goBack(): void {
-  this.location.back();
-}
+  }
+  goBack(): void {
+    this.location.back();
+  }
 
 }

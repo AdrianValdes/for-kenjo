@@ -9,9 +9,11 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AlbumFormComponent } from './album-form/album-form.component';
-import { AlbumFormCreateComponent } from './album-form-create/album-form-create.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { AlbumFormReactiveComponent } from './album-form-reactive/album-form-reactive.component';
+import { AlbumFormCreateReactiveComponent } from './album-form-create-reactive/album-form-create-reactive.component';
+import { ArtistsComponent } from './artists/artists.component';
+import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,15 +21,18 @@ import { AlbumFormCreateComponent } from './album-form-create/album-form-create.
     MessagesComponent,
     AlbumDetailComponent,
     DashboardComponent,
-    AlbumFormComponent,
-    AlbumFormCreateComponent
+    AlbumFormReactiveComponent,
+    AlbumFormCreateReactiveComponent,
+    ArtistsComponent,
+    ArtistDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,
     FormsModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

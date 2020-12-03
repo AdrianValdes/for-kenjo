@@ -3,6 +3,7 @@ import {Album} from "../model/album"
 import {MessageService} from "../services/message.service"
 
 import {AlbumService} from "../services/album.service"
+import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
@@ -11,8 +12,7 @@ import {AlbumService} from "../services/album.service"
 export class AlbumsComponent implements OnInit {
   selectedAlbum: Album
   albums: Album[]
-
-
+  userForm: FormGroup
 
   constructor(private albumService: AlbumService, private messageService: MessageService) { }
 
@@ -30,5 +30,6 @@ export class AlbumsComponent implements OnInit {
     this.albums = this.albums.filter(album => album._id !== id);
     this.albumService.deleteAlbum(id).subscribe();
   }
+
 
 }

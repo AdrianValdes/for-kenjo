@@ -1,0 +1,11 @@
+<p>artist-detail works!</p>
+<div *ngIf="artist">
+  <h2>{{ artist.name | uppercase }} Details</h2>
+  <div>title: {{ artist.name }}</div>
+  <div *ngIf="artist.deathDate">Birthdate: {{ artist.birthdate | date }}</div>
+  <div>Deathdate: {{ artist.deathDate | date }}</div>
+  <div>artistId: {{ artist._id }}</div>
+  <div>PhotoURL: {{ artist.photoUrl }}</div>
+
+  <button (click)="goBack()">go back</button>
+</div>

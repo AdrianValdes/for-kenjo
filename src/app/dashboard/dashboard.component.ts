@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Album} from "../model/album";
+import {Artist} from "../model/artist"
 import {AlbumService} from "../services/album.service";
+import {ArtistService} from "../services/artist.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -10,15 +12,19 @@ import {AlbumService} from "../services/album.service";
 export class DashboardComponent implements OnInit {
 
   albums: Album[] = []
-
-  constructor(private albumService: AlbumService ) { }
+  artists: Artist[] = []
+  constructor(private albumService: AlbumService, private artistService: ArtistService  ) { }
 
   ngOnInit(): void {
     this.getAlbums()
+    this.getArtists()
   }
 
   getAlbums(): void {
-    this.albumService.getAlbums().subscribe(albums => this.albums = albums.slice(0,3))
+    this.albumService.getAlbums().subscribe(albums => this.albums = albums.slice(0,5))
+  }
+  getArtists(): void {
+    this.artistService.getArtists().subscribe(artists => this.artists = artists.slice(0,5))
   }
 
 }

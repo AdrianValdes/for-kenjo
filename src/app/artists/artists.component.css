@@ -1,0 +1,37 @@
+.artists {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 15em;
+}
+.artist-card {
+  border: 1px solid coral;
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #eee;
+  margin: 0.5em;
+  padding: 0.3em 0;
+
+  border-radius: 4px;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+  font-family: Arial;
+}
+a {
+  color: inherit;
+}
+button.delete {
+  position: relative;
+  left: 19.1rem;
+  top: -1.8rem;
+  background-color: red !important;
+  color: white;
+}

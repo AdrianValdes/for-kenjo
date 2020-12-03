@@ -6,5 +6,6 @@
   <div>artistId: {{ album.artistId }}</div>
 
   <button (click)="goBack()">go back</button>
+  <app-album-form-reactive [album]="album"></app-album-form-reactive>
 </div>
-<app-album-form [album]="album"></app-album-form>
+<!-- <app-album-form [album]="album"></app-album-form> -->
