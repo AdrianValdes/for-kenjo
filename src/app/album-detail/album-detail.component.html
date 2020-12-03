@@ -1,11 +1,23 @@
 <div *ngIf="album">
-  <h2>{{ album.title | uppercase }} Details</h2>
-  <div>title: {{ album.title }}</div>
-  <div>genre: {{ album.genre }}</div>
-  <div>year: {{ album.year }}</div>
-  <div>artistId: {{ album.artistId }}</div>
-
-  <button (click)="goBack()">go back</button>
-  <app-album-form-reactive [album]="album"></app-album-form-reactive>
+  <div>
+    <h2>{{ album.title | uppercase }} Details</h2>
+    <div>title: {{ album.title }}</div>
+    <div>genre: {{ album.genre }}</div>
+    <div>year: {{ album.year }}</div>
+    <div>artistId: {{ album.artistId }}</div>
+    <div *ngFor="let artist of artists">
+      <h4 *ngIf="artist._id === album.artistId">
+        The author of this album is: {{ artist.name }}
+      </h4>
+    </div>
+    <button (click)="goBack()">go back</button>
+    <app-album-form-update-reactive
+      [album]="album"
+    ></app-album-form-update-reactive>
+    <app-artist-search
+      *ngIf="!album.artistId"
+      [album]="album"
+    ></app-artist-search>
+  </div>
 </div>
 <!-- <app-album-form [album]="album"></app-album-form> -->

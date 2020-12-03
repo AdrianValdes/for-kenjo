@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlbumFormReactiveComponent } from './album-form-reactive.component';
+import { ArtistSearchComponent } from './artist-search.component';
 
-describe('AlbumFormReactiveComponent', () => {
-  let component: AlbumFormReactiveComponent;
-  let fixture: ComponentFixture<AlbumFormReactiveComponent>;
+describe('ArtistSearchComponent', () => {
+  let component: ArtistSearchComponent;
+  let fixture: ComponentFixture<ArtistSearchComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlbumFormReactiveComponent ]
+      declarations: [ ArtistSearchComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlbumFormReactiveComponent);
+    fixture = TestBed.createComponent(ArtistSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -27,7 +27,7 @@ export class AlbumFormCreateReactiveComponent implements OnInit {
       coverUrl: ""
     })
 
-    if(this.album){this.fillAlbum()}
+    /* if(this.album){this.fillAlbum()} */
 
   }
 
@@ -45,13 +45,13 @@ get year(){
   return this.myForm.get("year")
 }
 
-fillAlbum(){
+/* fillAlbum(){
   this.myForm.patchValue({
     title: this.album.title,
     genre: this.album.genre,
     year: this.album.year,
     coverUrl: this.album.coverUrl
   })
-}
+} */
 
 }

@@ -5,15 +5,14 @@ import {Album} from "../model/album";
 import {AlbumService} from "../services/album.service"
 import { Location } from '@angular/common';
 @Component({
-  selector: 'app-album-form-reactive',
-  templateUrl: './album-form-reactive.component.html',
-  styleUrls: ['./album-form-reactive.component.css']
+  selector: 'app-album-form-update-reactive',
+  templateUrl: './album-form-update-reactive.component.html',
+  styleUrls: ['./album-form-update-reactive.component.css']
 })
-export class AlbumFormReactiveComponent implements OnInit {
+export class AlbumFormUpdateReactiveComponent implements OnInit {
 
 myForm: FormGroup;
 submitted = false;
-
 @Input() album:Album
 
 

@@ -81,7 +81,7 @@ deleteAlbum(id: string){
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      this.logError(`${operation} failed: ${error}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -91,6 +91,11 @@ deleteAlbum(id: string){
   /** Log a AlbumService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`AlbumService: ${message}`);
+  }
+
+   private logError(error:any){
+
+      this.messageService.addError(` ${error.message}`)
   }
 
 }

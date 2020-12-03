@@ -5,6 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class MessageService {
   messages: string[] = [];
+  errors: string[] = []
+
+  addError(error: string){
+    this.errors.push(error)
+  }
 
   add(message: string) {
     this.messages.push(message);
@@ -12,5 +17,6 @@ export class MessageService {
 
   clear() {
     this.messages = [];
+    this.errors = []
   }
 }

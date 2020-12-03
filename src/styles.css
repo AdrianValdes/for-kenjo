@@ -37,3 +37,6 @@ nav a {
   color: rgb(54, 168, 103);
   font-size: 1.8rem;
 }
+li {
+  list-style: none;
+}

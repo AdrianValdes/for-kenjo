@@ -1,0 +1,57 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <!-- Title input -->
+  <div>
+    <label>
+      Name:
+      <input type="text" formControlName="name" />
+    </label>
+  </div>
+  <div>
+    <!-- Birthday input -->
+    <label>
+      Birthdate:
+      <input
+        type="date"
+        formControlName="birthdate"
+        min="1909-01-01"
+        max="2030-12-31"
+      />
+    </label>
+    <div *ngIf="birthdate.errors?.min && birthdate.touched">
+      {{ birthdate.errors.min.actual }} The birthdate is too low 1909 is the
+      minimum
+    </div>
+    <div *ngIf="birthdate.errors?.max && birthdate.touched">
+      {{ birthdate.errors.max.actual }} The birthdate is too big 2030 is the
+      minimum
+    </div>
+    <div *ngIf="birthdate.errors?.pattern && birthdate.touched">
+      {{ birthdate.errors.pattern.actual }} You must introduce a number
+    </div>
+  </div>
+
+  <!--Deathdate Input  -->
+  <div>
+    <label>
+      Deathdate:
+      <input
+        type="date"
+        formControlName="deathDate"
+        min="1909-01-01"
+        max="2030-12-31"
+      />
+    </label>
+  </div>
+
+  <!--PhotoUrl Input  -->
+  <div>
+    <label>
+      CoverUrl:
+      <input type="text" formControlName="photoUrl" />
+    </label>
+  </div>
+
+  <!--artistId Input  -->
+
+  <button type="submit" [disabled]="!myForm.valid">Submit</button>
+</form>

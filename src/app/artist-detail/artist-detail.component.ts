@@ -3,6 +3,8 @@ import {Artist} from "../model/artist"
 import {ArtistService} from "../services/artist.service"
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import {AlbumService} from "../services/album.service"
+import { Album } from '../model/album';
 @Component({
   selector: 'app-artist-detail',
   templateUrl: './artist-detail.component.html',
@@ -10,13 +12,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ArtistDetailComponent implements OnInit {
  artist: Artist;
-
+ albums: Album[]
   constructor(private route: ActivatedRoute,
   private artistService: ArtistService,
-  private location: Location) { }
+  private location: Location, private albumService: AlbumService) { }
 
   ngOnInit(): void {
     this.getArtist();
+    this.getAlbums()
   }
   getArtist(): void {
     const id = this.route.snapshot.paramMap.get('id');
@@ -25,5 +28,11 @@ export class ArtistDetailComponent implements OnInit {
   }
   goBack(): void {
     this.location.back();
+  }
+
+  //Handeling connection between Artists an albums
+   getAlbums(): void {
+    this.albumService.getAlbums()
+    .subscribe(albums => this.albums = albums);
   }
 }
