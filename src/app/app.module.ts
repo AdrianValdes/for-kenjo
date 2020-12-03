@@ -9,6 +9,8 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AlbumFormComponent } from './album-form/album-form.component';
+import { AlbumFormCreateComponent } from './album-form-create/album-form-create.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AlbumsComponent,
     MessagesComponent,
     AlbumDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    AlbumFormComponent,
+    AlbumFormCreateComponent
   ],
   imports: [
     BrowserModule,

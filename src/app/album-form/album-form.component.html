@@ -1,0 +1,43 @@
+<div class="container">
+  <div>
+    <h1>Edit your album</h1>
+    <form *ngIf="album" (ngSubmit)="onSubmit()" #albumForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" [(ngModel)]="album.title" name="title" />
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input
+          type="text"
+          id="genre"
+          [(ngModel)]="album.genre"
+          name="genre"
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input
+          type="text"
+          id="year"
+          [(ngModel)]="album.year"
+          name="year"
+          autocomplete="off"
+        />
+      </div>
+      <div class="form-group">
+        <label for="coverUrl">CoverUrl</label>
+        <input
+          type="text"
+          id="coverUrl"
+          [(ngModel)]="album.coverUrl"
+          name="coverUrl"
+          autocomplete="off"
+        />
+      </div>
+      <button type="submit" class="btn-form">Submit</button>
+    </form>
+  </div>
+</div>
+<div [hidden]="!submitted"><h2>You submitted the changes!</h2></div>

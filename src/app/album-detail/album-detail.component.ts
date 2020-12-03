@@ -27,8 +27,5 @@ getAlbum(): void {
 goBack(): void {
   this.location.back();
 }
-save(): void {
-  this.albumService.updateAlbum(this.album)
-    .subscribe(() => this.goBack());
-}
+
 }

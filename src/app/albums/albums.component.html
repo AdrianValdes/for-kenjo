@@ -1,5 +1,4 @@
 <h2>Your Albums</h2>
-
 <div class="albums">
   <div class="album-card" *ngFor="let album of albums">
     <a routerLink="/detail/{{ album._id }}">
@@ -10,12 +9,13 @@
     </button>
   </div>
 </div>
-
+<app-album-form-create></app-album-form-create>
+<!--
 <div>
   <label
     >Add an album name (not working yet)!!:
     <input #albumName />
   </label>
-  <!-- (click) passes input value to add() and then clears the input -->
+  (click) passes input value to add() and then clears the input
   <button (click)="add(albumName.value); albumName.value = ''">add</button>
-</div>
+</div> -->

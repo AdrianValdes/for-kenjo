@@ -43,6 +43,8 @@ getAlbum(id: string): Observable<Album> {
 /** PUT: update the album on the server */
 updateAlbum(album: Album): Observable<any> {
   const url = `${this.ROOT_URL}/album/${album._id}`
+  console.log("HHEE", album);
+  console.log(url);
 
   return this.http.put(url, album, this.httpOptions).pipe(
     tap(_ => this.log(`updated album id=${album._id}`)),
@@ -51,7 +53,7 @@ updateAlbum(album: Album): Observable<any> {
 }
 /** POST: add a new album to the server */
 
-//TODO: Add more properties for the album
+
 addAlbum(album: Album): Observable<Album> {
   const url = `${this.ROOT_URL}/album`
   return this.http.post<Album>(url, album, this.httpOptions).pipe(

@@ -1,12 +1,10 @@
 <div *ngIf="album">
   <h2>{{ album.title | uppercase }} Details</h2>
-  <div><span>artistId: </span>{{ album.artistId }}</div>
-  <div>
-    <label
-      >Title: {{ album.title }}
-      <input [(ngModel)]="album.title" placeholder="title" />
-    </label>
-  </div>
+  <div>title: {{ album.title }}</div>
+  <div>genre: {{ album.genre }}</div>
+  <div>year: {{ album.year }}</div>
+  <div>artistId: {{ album.artistId }}</div>
+
   <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
 </div>
+<app-album-form [album]="album"></app-album-form>

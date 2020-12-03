@@ -1,0 +1,65 @@
+<div class="container">
+  <div>
+    <h1>Create an album</h1>
+    <form (ngSubmit)="onSubmit(albumForm.value)" #albumForm="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          required
+          type="text"
+          id="title"
+          name="title"
+          ngModel
+          #title="ngModel"
+          placeholder="Best Album Ever"
+        />
+      </div>
+      <div class="form-group">
+        <label for="genre">Genre</label>
+        <input
+          type="text"
+          id="genre"
+          name="genre"
+          autocomplete="off"
+          placeholder="Gregorian Chant"
+          ngModel
+        />
+      </div>
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input
+          (change)="log(year)"
+          type="number"
+          min="1909"
+          max="2030"
+          id="year"
+          name="year"
+          autocomplete="off"
+          placeholder="1909"
+          ngModel
+          #year="ngModel"
+        />
+      </div>
+      <div class="form-group">
+        <label for="coverUrl">CoverUrl</label>
+        <input
+          type="text"
+          id="coverUrl"
+          name="coverUrl"
+          autocomplete="off"
+          placeholder="http://greatband.example"
+          ngModel
+        />
+      </div>
+      <button type="submit" class="btn-form" [disabled]="!albumForm.form.valid">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+<div>
+  {{ title.value }}
+</div>
+<div [hidden]="!submitted">
+  <h2>You submitted the changes!</h2>
+</div>
