@@ -1,4 +1,37 @@
-<main class="main">
+<mat-grid-list cols="2">
+  <mat-grid-tile>
+    <mat-grid-tile-header
+      ><a routerLink="/albums">Albums</a></mat-grid-tile-header
+    >
+
+    <div>
+      <h2>Top Albums list</h2>
+      <a *ngFor="let album of albums" routerLink="/detail/{{ album._id }}">
+        <div>
+          <h4>{{ album.title }}</h4>
+        </div>
+      </a>
+    </div>
+  </mat-grid-tile>
+  <mat-grid-tile
+    ><mat-grid-tile-header
+      ><a routerLink="/artists">Artists</a></mat-grid-tile-header
+    >
+    <div>
+      <h2>Top artists list</h2>
+      <a
+        *ngFor="let artist of artists"
+        routerLink="/detailArtist/{{ artist._id }}"
+      >
+        <div>
+          <h4>{{ artist.name }}</h4>
+        </div>
+      </a>
+    </div></mat-grid-tile
+  >
+</mat-grid-list>
+
+<!-- <main class="main">
   <h1><a routerLink="/albums">Albums</a></h1>
   <h1><a routerLink="/artists">Artists</a></h1>
 </main>
@@ -19,4 +52,4 @@
       <h4>{{ artist.name }}</h4>
     </div>
   </a>
-</div>
+</div> -->

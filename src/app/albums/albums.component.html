@@ -1,13 +1,11 @@
-<h2>Your Albums</h2>
-<div class="albums">
-  <div class="album-card" *ngFor="let album of albums">
-    <a routerLink="/detail/{{ album._id }}">
-      <p>Title: {{ album.title }}</p>
-    </a>
-    <button class="delete" title="delete album" (click)="delete(album._id)">
-      x
-    </button>
-  </div>
+<h2 class="title">Your Albums</h2>
+
+<div class="wrapper">
+  <app-card
+    *ngFor="let album of albums"
+    [album]="album"
+    (cardDeleted)="onCardDeleted($event)"
+  ></app-card>
 </div>
 
-<app-album-form-reactive [action]="'create'"></app-album-form-reactive>
+<!-- <app-album-form-reactive [action]="'create'"></app-album-form-reactive> -->

@@ -1,5 +1,58 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <!-- Title input -->
+<div class="form-wrapper">
+  <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="from-full-width">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="title of the album"
+        formControlName="title"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field
+      hintLabel="Min year 1909, max year 2030"
+      appearance="outline"
+      class="from-full-width"
+    >
+      <mat-label>Enter the album year</mat-label>
+      <input
+        matInput
+        #input
+        placeholder="year when the album was published"
+        formControlName="year"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline" class="from-full-width">
+      <mat-label>Genre</mat-label>
+      <input
+        matInput
+        placeholder="genre of the album"
+        formControlName="genre"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline" class="from-full-width">
+      <mat-label>Cover URL</mat-label>
+      <input
+        matInput
+        placeholder="url link to a cover picture of the album"
+        formControlName="coverUrl"
+      />
+    </mat-form-field>
+    <br />
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      [disabled]="!myForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
   <div>
     <label>
       Title:
@@ -7,7 +60,7 @@
     </label>
   </div>
   <div>
-    <!-- Year input -->
+
     <label>
       Year:
       <input type="text" formControlName="year" />
@@ -23,7 +76,7 @@
     </div>
   </div>
 
-  <!--Genre Input  -->
+
   <div>
     <label>
       Genre:
@@ -31,7 +84,7 @@
     </label>
   </div>
 
-  <!--CoverUrl Input  -->
+
   <div>
     <label>
       CoverUrl:
@@ -41,3 +94,4 @@
 
   <button type="submit" [disabled]="!myForm.valid">Submit</button>
 </form>
+ -->

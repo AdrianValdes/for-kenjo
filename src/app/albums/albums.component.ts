@@ -30,4 +30,9 @@ export class AlbumsComponent implements OnInit {
     this.albums = this.albums.filter((album) => album._id !== id);
     this.albumService.deleteAlbum(id).subscribe();
   }
+
+  onCardDeleted(id: string) {
+    console.log(id);
+    this.delete(id);
+  }
 }

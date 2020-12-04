@@ -1,12 +1,10 @@
-label {
-  display: block;
-  margin: 0.5em 0;
-  color: #607d8b;
-  font-weight: bold;
+.card-form-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 900px;
 }
-input {
-  display: block;
-  height: 2em;
-  font-size: 1em;
-  padding-left: 0.4em;
+.img-wrapper img {
+  background-position: center;
+  background-repeat: no-repeat;
 }

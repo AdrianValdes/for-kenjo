@@ -52,7 +52,7 @@ export class AlbumFormReactiveComponent implements OnInit {
     if (!album) {
       return;
     }
-    this.albumService.addAlbum(album).subscribe((album) => {});
+    this.albumService.addAlbum(album).subscribe();
   }
 
   onSubmit() {
@@ -64,6 +64,7 @@ export class AlbumFormReactiveComponent implements OnInit {
       case 'create':
         this.createAlbum(this.myForm.value);
         this.submitted = true;
+        this.location.back();
       default:
         break;
     }

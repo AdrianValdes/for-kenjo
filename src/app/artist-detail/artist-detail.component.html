@@ -1,5 +1,5 @@
 <div *ngIf="artist">
-  <h2>{{ artist.name | uppercase }} Details</h2>
+  <h2 class="title">{{ artist.name | uppercase }}</h2>
   <div>title: {{ artist.name }}</div>
   <div *ngIf="artist.deathDate">Birthdate: {{ artist.birthdate | date }}</div>
   <div>Deathdate: {{ artist.deathDate | date }}</div>

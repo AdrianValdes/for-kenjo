@@ -1,8 +1,8 @@
-.main {
-  display: flex;
-  justify-content: space-around;
-  margin: 1rem;
+mat-grid-tile {
+  background: seagreen;
 }
-main a {
-  color: inherit;
+mat-grid-tile-header {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
 }

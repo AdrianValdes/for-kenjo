@@ -4,8 +4,20 @@
     <span class="push"></span>
     <div>
       <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-      <a class="nav-link" routerLink="/albums">Albums</a>
+      <a
+        *ngIf="this.router.url !== '/albums'"
+        class="nav-link"
+        routerLink="/albums"
+        >Albums</a
+      >
       <a class="nav-link" routerLink="/artists">Artists</a>
+      <a
+        class="nav-link"
+        *ngIf="this.router.url === '/albums'"
+        routerLink="/createAlbum"
+      >
+        Create Album</a
+      >
     </div>
   </mat-toolbar>
 </p>

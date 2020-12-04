@@ -1,5 +1,29 @@
-<p>artist-search works!</p>
-<div id="search-component">
+<div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Search an author</mat-label>
+    <input
+      matInput
+      placeholder="Assign this album to an artist"
+      #searchBox
+      id="search-box"
+      (input)="search(searchBox.value)"
+    />
+  </mat-form-field>
+  <ul *ngIf="searchedArtists" class="search-result">
+    <li *ngFor="let artist of searchedArtists">
+      {{ artist.name }}
+    </li>
+    <button
+      class="btn-match"
+      mat-flat-button
+      *ngIf="searchedArtists.length === 1"
+      (click)="bindArtistToAlbum()"
+    >
+      Match
+    </button>
+  </ul>
+</div>
+<!-- <div id="search-component">
   <h4><label for="search-box">Artist Search</label></h4>
 
   <input #searchBox id="search-box" (input)="search(searchBox.value)" />
@@ -12,4 +36,4 @@
       Match
     </button>
   </ul>
-</div>
+</div> -->
