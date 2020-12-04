@@ -54,6 +54,8 @@ updateArtist(artist: Artist): Observable<any> {
 
 addArtist(artist: Artist): Observable<Artist> {
   const url = `${this.ROOT_URL}/artist`
+  console.log("from addArtist", artist);
+
   return this.http.post<Artist>(url, artist, this.httpOptions).pipe(
     tap((newArtist: Artist) => this.log(`added artist w/ id=${newArtist._id}`)),
     catchError(this.handleError<Artist>('addArtist'))

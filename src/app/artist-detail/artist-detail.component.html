@@ -7,12 +7,13 @@
   <div>artistId: {{ artist._id }}</div>
   <button (click)="goBack()">go back</button>
   <app-artist-form-update-reactive
+    [action]="'update'"
     [artist]="artist"
   ></app-artist-form-update-reactive>
 </div>
 
 <div *ngIf="albums">
-  <h2>We have the following albums:</h2>
+  <h2>You have the following albums for this artist:</h2>
   <ul *ngFor="let album of albums">
     <li *ngIf="album.artistId === artist._id">{{ album.title }}</li>
   </ul>

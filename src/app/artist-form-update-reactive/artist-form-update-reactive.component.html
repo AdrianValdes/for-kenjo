@@ -3,7 +3,11 @@
   <div>
     <label>
       Name:
-      <input type="text" formControlName="name" />
+      <input
+        type="text"
+        formControlName="name"
+        placeholder="name of the artist or band"
+      />
     </label>
   </div>
   <div>
@@ -15,6 +19,7 @@
         formControlName="birthdate"
         min="1909-01-01"
         max="2030-12-31"
+        placeholder="year when the artist was born or the band was created"
       />
     </label>
     <div *ngIf="birthdate.errors?.min && birthdate.touched">
@@ -39,6 +44,7 @@
         formControlName="deathDate"
         min="1909-01-01"
         max="2030-12-31"
+        placeholder="year when the artist died or the band split up"
       />
     </label>
   </div>
@@ -46,7 +52,7 @@
   <!--PhotoUrl Input  -->
   <div>
     <label>
-      CoverUrl:
+      PhotoUrl:
       <input type="text" formControlName="photoUrl" />
     </label>
   </div>

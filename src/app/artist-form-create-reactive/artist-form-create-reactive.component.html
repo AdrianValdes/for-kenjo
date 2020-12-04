@@ -23,16 +23,16 @@
       />
     </label>
     <div *ngIf="birthdate.errors?.min && birthdate.touched">
-      {{ birthdate.errors.min.actual }} The birthdate is too low the minimum
-      year is 1909.
+      {{ birthdate.errors.min.actual }} The birthdate is too low, 1909 is the
+      minimum
     </div>
     <div *ngIf="birthdate.errors?.max && birthdate.touched">
-      {{ birthdate.errors.max.actual }} The birthdate is too low the maximum
-      year is 2030
+      {{ birthdate.errors.max.actual }} The birthdate is too big, 2030 is the
+      minimum
     </div>
   </div>
 
-  <!--Genre Input  -->
+  <!--Deathdate Input  -->
   <div>
     <label>
       Deathdate:
