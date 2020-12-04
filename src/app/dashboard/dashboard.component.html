@@ -1,4 +1,4 @@
-<mat-grid-list cols="2">
+<!-- <mat-grid-list cols="2">
   <mat-grid-tile>
     <mat-grid-tile-header
       ><a routerLink="/albums">Albums</a></mat-grid-tile-header
@@ -9,6 +9,7 @@
       <a *ngFor="let album of albums" routerLink="/detail/{{ album._id }}">
         <div>
           <h4>{{ album.title }}</h4>
+           <img src="{{ album.coverUrl }}" alt="" />
         </div>
       </a>
     </div>
@@ -25,31 +26,56 @@
       >
         <div>
           <h4>{{ artist.name }}</h4>
+          <img src="`{{ artist.photoUrl }}`" alt="" />
         </div>
-      </a>
-    </div></mat-grid-tile
-  >
-</mat-grid-list>
+      </a></div
+  ></mat-grid-tile>
+</mat-grid-list> -->
 
-<!-- <main class="main">
-  <h1><a routerLink="/albums">Albums</a></h1>
-  <h1><a routerLink="/artists">Artists</a></h1>
+<main class="main-wrapper">
+  <div>
+    <h1>
+      <a routerLink="/albums">to all albums</a
+      ><a routerLink="/albums" class="arrow-icon">
+        <mat-icon>arrow_right_alt</mat-icon></a
+      >
+    </h1>
+    <div class="albums-artists-list">
+      <div *ngFor="let album of albums">
+        <div class="img-wrapper">
+          <h4>
+            <a routerLink="/detail/{{ album._id }}">{{ album.title }}</a>
+          </h4>
+          <img *ngIf="album.coverUrl" src="{{ album.coverUrl }}" alt="album" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h1>
+      <a routerLink="/artists">see all artists</a
+      ><a routerLink="/artists" class="arrow-icon">
+        <mat-icon>arrow_right_alt</mat-icon></a
+      >
+    </h1>
+    <div class="albums-artists-list">
+      <div *ngFor="let artist of artists">
+        <div>
+          <div class="img-wrapper">
+            <h4>
+              <a routerLink="/detailArtist/{{ artist._id }}">{{
+                artist.name
+              }}</a>
+            </h4>
+            <img
+              *ngIf="artist.photoUrl"
+              src="{{ artist.photoUrl }}"
+              alt="artist"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
-
-<div class="top-albums-list">
-  <h2>Top Albums list</h2>
-  <a *ngFor="let album of albums" routerLink="/detail/{{ album._id }}">
-    <div>
-      <h4>{{ album.title }}</h4>
-    </div>
-  </a>
-</div>
-
-<div class="top-artits-list">
-  <h2>Top artists list</h2>
-  <a *ngFor="let artist of artists" routerLink="/detailArtist/{{ artist._id }}">
-    <div>
-      <h4>{{ artist.name }}</h4>
-    </div>
-  </a>
-</div> -->

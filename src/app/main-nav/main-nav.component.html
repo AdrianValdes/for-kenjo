@@ -1,23 +1,26 @@
-<p>
-  <mat-toolbar color="primary">
-    <span class="title">{{ title }}</span>
-    <span class="push"></span>
-    <div>
-      <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-      <a
-        *ngIf="this.router.url !== '/albums'"
-        class="nav-link"
-        routerLink="/albums"
-        >Albums</a
-      >
-      <a class="nav-link" routerLink="/artists">Artists</a>
-      <a
-        class="nav-link"
-        *ngIf="this.router.url === '/albums'"
-        routerLink="/createAlbum"
-      >
-        Create Album</a
-      >
-    </div>
-  </mat-toolbar>
-</p>
+<mat-toolbar class="navbar">
+  <a routerLink="/dashboard">
+    <img
+      class="logo"
+      src="https://uploads-ssl.webflow.com/598978c376433a0001206e92/5e6a18c568ad1fb71f41d4e1_kenjo-horizontal-logo.svg"
+      alt="logo"
+  /></a>
+  <span class="push"></span>
+  <div>
+    <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+    <a
+      *ngIf="this.router.url !== '/albums'"
+      class="nav-link"
+      routerLink="/albums"
+      >Albums</a
+    >
+    <a class="nav-link" routerLink="/artists">Artists</a>
+    <a
+      class="nav-link"
+      *ngIf="this.router.url === '/albums'"
+      routerLink="/createAlbum"
+    >
+      Create Album</a
+    >
+  </div>
+</mat-toolbar>

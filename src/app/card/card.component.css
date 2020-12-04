@@ -1,9 +1,21 @@
 .card {
   max-width: 200px;
-  /*   width: calc(100% - 50px);
-  height: calc(100% - 50px); */
 }
-.example-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
-  background-size: cover;
+
+.album-title:hover {
+  color: #164416;
+}
+
+img {
+  display: block;
+  height: 250px;
+}
+.btn-edit {
+  color: #164416;
+}
+.btn-edit:hover {
+  color: #569656;
+}
+.btn-delete {
+  color: rgb(187, 37, 67);
 }
