@@ -11,33 +11,38 @@
     </mat-list-item>
   </mat-list>
 </div> -->
-<!-- <a (click)="goBack()"> <mat-icon>keyboard_backspace</mat-icon></a> -->
-<div *ngIf="album" class="card-form-wrapper">
-  <!-- <app-card [album]="album"></app-card> -->
-  <div class="img-wrapper">
-    <img src="{{ album.coverUrl }}" alt="" />
-  </div>
-  <div>
-    <h2>Details</h2>
-    <div *ngFor="let artist of artists">
-      <h4 *ngIf="artist._id === album.artistId">Author: {{ artist.name }}</h4>
-    </div>
-    <p>title: {{ album.title }}</p>
-    <p>genre: {{ album.genre }}</p>
-    <p>year: {{ album.year }}</p>
-    <p>coverUrl: {{ album.coverUrl }}</p>
-    <p>artistId: {{ album.artistId }}</p>
-  </div>
-  <app-album-form-reactive
-    [album]="album"
-    [action]="'update'"
-  ></app-album-form-reactive>
-  <app-artist-search
-    *ngIf="!album.artistId"
-    [album]="album"
-  ></app-artist-search>
-</div>
 
+<h1 class="title">
+  <a class="arrow-left-icon" (click)="goBack()">
+    <mat-icon>keyboard_backspace</mat-icon></a
+  >album details
+</h1>
+<div class="main">
+  <div *ngIf="album" class="card-form-wrapper">
+    <div class="img-wrapper">
+      <img src="{{ album.coverUrl }}" alt="" />
+    </div>
+    <div>
+      <h2>Details</h2>
+      <div *ngFor="let artist of artists">
+        <h4 *ngIf="artist._id === album.artistId">Author: {{ artist.name }}</h4>
+      </div>
+      <p>title: {{ album.title }}</p>
+      <p>genre: {{ album.genre }}</p>
+      <p>year: {{ album.year }}</p>
+      <p>coverUrl: {{ album.coverUrl }}</p>
+      <p>artistId: {{ album.artistId }}</p>
+    </div>
+    <app-album-form-reactive
+      [album]="album"
+      [action]="'update'"
+    ></app-album-form-reactive>
+    <app-artist-search
+      *ngIf="!album.artistId"
+      [album]="album"
+    ></app-artist-search>
+  </div>
+</div>
 <!-- <button (click)="goBack()">go back</button> -->
 <!-- <div *ngIf="album">
   <div>

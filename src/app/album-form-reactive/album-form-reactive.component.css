@@ -12,3 +12,11 @@
 .from-full-width {
   width: 100%;
 }
+
+.btn-submit {
+  background-color: #0d290d;
+  color: white;
+}
+.btn-submit:hover {
+  background-color: #193d19;
+}
