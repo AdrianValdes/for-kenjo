@@ -10,12 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlbumFormUpdateReactiveComponent } from './album-form-update-reactive/album-form-update-reactive.component';
+import { AlbumFormReactiveComponent } from './album-form-reactive/album-form-reactive.component';
 
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 
-import { ArtistFormUpdateReactiveComponent } from './artist-form-update-reactive/artist-form-update-reactive.component';
+import { ArtistFormReactiveComponent } from './artist-form-reactive/artist-form-reactive.component';
 import { ArtistSearchComponent } from './artist-search/artist-search.component';
 @NgModule({
   declarations: [
@@ -24,10 +24,10 @@ import { ArtistSearchComponent } from './artist-search/artist-search.component';
     MessagesComponent,
     AlbumDetailComponent,
     DashboardComponent,
-    AlbumFormUpdateReactiveComponent,
+    AlbumFormReactiveComponent,
     ArtistsComponent,
     ArtistDetailComponent,
-    ArtistFormUpdateReactiveComponent,
+    ArtistFormReactiveComponent,
     ArtistSearchComponent,
   ],
   imports: [

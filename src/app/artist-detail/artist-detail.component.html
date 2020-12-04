@@ -6,10 +6,10 @@
   <div>PhotoURL: {{ artist.photoUrl }}</div>
   <div>artistId: {{ artist._id }}</div>
   <button (click)="goBack()">go back</button>
-  <app-artist-form-update-reactive
+  <app-artist-form-reactive
     [action]="'update'"
     [artist]="artist"
-  ></app-artist-form-update-reactive>
+  ></app-artist-form-reactive>
 </div>
 
 <div *ngIf="albums">

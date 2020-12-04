@@ -6,11 +6,11 @@ import { ArtistService } from '../services/artist.service';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-artist-form-update-reactive',
-  templateUrl: './artist-form-update-reactive.component.html',
-  styleUrls: ['./artist-form-update-reactive.component.css'],
+  selector: 'app-artist-form-reactive',
+  templateUrl: './artist-form-reactive.component.html',
+  styleUrls: ['./artist-form-reactive.component.css'],
 })
-export class ArtistFormUpdateReactiveComponent implements OnInit {
+export class ArtistFormReactiveComponent implements OnInit {
   myForm: FormGroup;
   submitted = false;
   @Input() artist: Artist;
