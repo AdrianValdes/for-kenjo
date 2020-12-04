@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlbumFormReactiveComponent } from './album-form-update-reactive.component';
+import { AlbumFormUpdateReactiveComponent } from './album-form-update-reactive.component';
 
-describe('AlbumFormReactiveComponent', () => {
-  let component: AlbumFormReactiveComponent;
-  let fixture: ComponentFixture<AlbumFormReactiveComponent>;
+describe('AlbumFormUpdateReactiveComponent', () => {
+  let component: AlbumFormUpdateReactiveComponent;
+  let fixture: ComponentFixture<AlbumFormUpdateReactiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AlbumFormReactiveComponent ]
+      declarations: [ AlbumFormUpdateReactiveComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AlbumFormReactiveComponent);
+    fixture = TestBed.createComponent(AlbumFormUpdateReactiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

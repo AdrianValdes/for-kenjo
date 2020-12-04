@@ -1,8 +1,0 @@
-.ng-valid[required],
-.ng-valid.required {
-  border-left: 2px solid #42a948; /* green */
-}
-
-.ng-invalid:not(form) {
-  border-left: 2px solid #c81613; /* red */
-}
