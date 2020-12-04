@@ -97,8 +97,6 @@ export class ArtistService {
 
   /** Log a ArtistService message with the MessageService */
   private log(message: string) {
-    console.log();
-
     this.messageService.add(`ArtistService: ${message}`);
   }
 

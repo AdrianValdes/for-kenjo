@@ -30,6 +30,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { CardArtistComponent } from './card-artist/card-artist.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { ArtistCreateComponent } from './artist-create/artist-create.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +50,8 @@ import { MatIconModule } from '@angular/material/icon';
     MainNavComponent,
     CardComponent,
     AlbumCreateComponent,
+    CardArtistComponent,
+    ArtistCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +70,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatInputModule,
     MatListModule,
     MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

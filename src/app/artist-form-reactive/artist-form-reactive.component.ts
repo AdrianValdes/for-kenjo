@@ -13,6 +13,8 @@ import { Location } from '@angular/common';
 export class ArtistFormReactiveComponent implements OnInit {
   myForm: FormGroup;
   submitted = false;
+  minDate: Date;
+  maxDate: Date;
   @Input() artist: Artist;
   @Input() action: string;
 
@@ -20,7 +22,11 @@ export class ArtistFormReactiveComponent implements OnInit {
     private fb: FormBuilder,
     private artistService: ArtistService,
     private location: Location
-  ) {}
+  ) {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 111, 0, 1);
+    this.maxDate = new Date(currentYear + 10, 11, 31);
+  }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -62,15 +68,16 @@ export class ArtistFormReactiveComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.action);
     switch (this.action) {
       case 'update':
         this.updateArtist(this.myForm.value);
         this.submitted = true;
+        this.location.back();
         break;
       case 'create':
         this.createArtist(this.myForm.value);
         this.submitted = true;
+        this.location.back();
         break;
       default:
         break;

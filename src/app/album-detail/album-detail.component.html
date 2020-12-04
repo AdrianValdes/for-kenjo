@@ -1,17 +1,3 @@
-<!-- <div *ngIf="album">
-
-  <h2>{{ album.title | uppercase }}</h2>
-  <div><img src="{{ album.coverUrl }}" alt="" /></div>
-  <mat-list role="list">
-    <mat-list-item role="listitem">title: {{ album.title }}</mat-list-item>
-    <mat-list-item role="listitem">genre: {{ album.genre }}</mat-list-item>
-    <mat-list-item role="listitem">year: {{ album.year }}</mat-list-item>
-    <mat-list-item role="listitem"
-      >coverUrl: {{ album.coverUrl }}
-    </mat-list-item>
-  </mat-list>
-</div> -->
-
 <h1 class="title">
   <a class="arrow-left-icon" (click)="goBack()">
     <mat-icon>keyboard_backspace</mat-icon></a
@@ -20,7 +6,12 @@
 <div class="main">
   <div *ngIf="album" class="card-form-wrapper">
     <div class="img-wrapper">
-      <img src="{{ album.coverUrl }}" alt="" />
+      <img *ngIf="album.coverUrl" src="{{ album.coverUrl }}" alt="" />
+      <img
+        *ngIf="album.coverUrl === ''"
+        src="http://via.placeholder.com/300x360"
+        alt="a placeholder cover"
+      />
     </div>
     <div>
       <h2>Details</h2>

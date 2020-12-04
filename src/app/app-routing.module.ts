@@ -6,6 +6,7 @@ import { AlbumDetailComponent } from './album-detail/album-detail.component';
 import { ArtistsComponent } from './artists/artists.component';
 import { ArtistDetailComponent } from './artist-detail/artist-detail.component';
 import { AlbumCreateComponent } from './album-create/album-create.component';
+import { ArtistCreateComponent } from './artist-create/artist-create.component';
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'createAlbum', component: AlbumCreateComponent },
   { path: 'artists', component: ArtistsComponent },
   { path: 'detailArtist/:id', component: ArtistDetailComponent },
+  { path: 'createArtist', component: ArtistCreateComponent },
 ];
 
 @NgModule({

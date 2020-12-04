@@ -32,7 +32,6 @@ export class AlbumsComponent implements OnInit {
   }
 
   onCardDeleted(id: string) {
-    console.log(id);
     this.delete(id);
   }
 }

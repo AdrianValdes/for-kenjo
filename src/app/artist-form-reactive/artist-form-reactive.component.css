@@ -1,0 +1,22 @@
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.form-full-width {
+  width: 100%;
+}
+
+.btn-submit {
+  background-color: #0d290d;
+  color: white;
+}
+.btn-submit:hover {
+  background-color: #193d19;
+}

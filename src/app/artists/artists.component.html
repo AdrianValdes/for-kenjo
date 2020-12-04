@@ -1,4 +1,4 @@
-<h2 class="title">Your Artists</h2>
+<!-- <h2 class="title">Your Artists</h2>
 <div class="artists">
   <div class="artist-card" *ngFor="let artist of artists">
     <a routerLink="/detailArtist/{{ artist._id }}">
@@ -10,4 +10,13 @@
   </div>
 </div>
 <app-artist-form-reactive [action]="'create'"></app-artist-form-reactive>
-<app-messages></app-messages>
+<app-messages></app-messages> -->
+<h2 class="title">Your Artists</h2>
+
+<div class="wrapper">
+  <app-card-artist
+    *ngFor="let artist of artists"
+    [artist]="artist"
+    (cardDeleted)="onCardDeleted($event)"
+  ></app-card-artist>
+</div>

@@ -1,5 +1,62 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-  <!-- Title input -->
+<div class="form-wrapper">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="form-full-width">
+      <mat-label>Name</mat-label>
+      <input
+        matInput
+        placeholder="name of the artist or band"
+        formControlName="name"
+      />
+    </mat-form-field>
+    <br />
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Birthday or day of founding</mat-label>
+      <input
+        matInput
+        formControlName="birthdate"
+        [min]="minDate"
+        [max]="maxDate"
+        [matDatepicker]="picker1"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+      <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+
+    <br />
+    <mat-form-field class="form-full-width" appearance="outline">
+      <mat-label>Death date or band split up</mat-label>
+      <input
+        matInput
+        formControlName="deathDate"
+        [min]="minDate"
+        [max]="maxDate"
+        [matDatepicker]="picker2"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form-full-width">
+      <mat-label>Photo URL</mat-label>
+      <input
+        matInput
+        placeholder="url link to a photo or picture of the artist"
+        formControlName="photoUrl"
+      />
+    </mat-form-field>
+    <br />
+    <button
+      mat-flat-button
+      class="btn-submit"
+      type="submit"
+      [disabled]="!myForm.valid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
   <div>
     <label>
       Name:
@@ -11,7 +68,7 @@
     </label>
   </div>
   <div>
-    <!-- Birthday input -->
+
     <label>
       Birthdate:
       <input
@@ -35,7 +92,7 @@
     </div>
   </div>
 
-  <!--Deathdate Input  -->
+
   <div>
     <label>
       Deathdate:
@@ -49,7 +106,7 @@
     </label>
   </div>
 
-  <!--PhotoUrl Input  -->
+
   <div>
     <label>
       PhotoUrl:
@@ -57,7 +114,7 @@
     </label>
   </div>
 
-  <!--artistId Input  -->
 
   <button type="submit" [disabled]="!myForm.valid">Submit</button>
 </form>
+ -->

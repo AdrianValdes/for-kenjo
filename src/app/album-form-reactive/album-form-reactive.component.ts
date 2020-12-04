@@ -46,7 +46,6 @@ export class AlbumFormReactiveComponent implements OnInit {
     this.albumService
       .updateAlbum({ ...this.album, ...album })
       .subscribe((album) => (this.album = { ...this.album, ...album }));
-    this.location.back();
   }
   createAlbum(album: Album): void {
     if (!album) {
@@ -60,6 +59,7 @@ export class AlbumFormReactiveComponent implements OnInit {
       case 'update':
         this.updateAlbum(this.myForm.value);
         this.submitted = true;
+        this.location.back();
         break;
       case 'create':
         this.createAlbum(this.myForm.value);

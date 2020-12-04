@@ -11,7 +11,6 @@
 }
 .main-wrapper h1 {
   text-align: center;
-  position: relative;
 }
 .albums-artists-list {
   max-width: 1200px;
@@ -40,6 +39,7 @@ h4 {
   text-align: center;
 }
 .arrow-right-icon {
-  position: absolute;
+  position: relative;
   top: 0.5rem;
+  left: 1rem;
 }

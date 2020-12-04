@@ -30,4 +30,7 @@ export class ArtistsComponent implements OnInit {
     this.artists = this.artists.filter((artist) => artist._id !== id);
     this.artistService.deleteArtist(id).subscribe();
   }
+  onCardDeleted(id: string) {
+    this.delete(id);
+  }
 }

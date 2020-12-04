@@ -14,13 +14,25 @@
       routerLink="/albums"
       >Albums</a
     >
-    <a class="nav-link" routerLink="/artists">Artists</a>
+    <a
+      *ngIf="this.router.url !== '/artists'"
+      class="nav-link"
+      routerLink="/artists"
+      >Artists</a
+    >
     <a
       class="nav-link"
       *ngIf="this.router.url === '/albums'"
       routerLink="/createAlbum"
     >
-      Create Album</a
+      Add Album</a
+    >
+    <a
+      class="nav-link"
+      *ngIf="this.router.url === '/artists'"
+      routerLink="/createArtist"
+    >
+      Add Artist</a
     >
   </div>
 </mat-toolbar>

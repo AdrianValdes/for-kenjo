@@ -47,6 +47,11 @@
             <a routerLink="/detail/{{ album._id }}">{{ album.title }}</a>
           </h4>
           <img *ngIf="album.coverUrl" src="{{ album.coverUrl }}" alt="album" />
+          <img
+            *ngIf="album.coverUrl === ''"
+            src="http://via.placeholder.com/300x360"
+            alt="a placeholder cover"
+          />
         </div>
       </div>
     </div>
@@ -55,7 +60,7 @@
   <div>
     <h1>
       <a routerLink="/artists">see all artists</a
-      ><a routerLink="/artists" class="arrow-icon">
+      ><a routerLink="/artists" class="arrow-right-icon">
         <mat-icon>arrow_right_alt</mat-icon></a
       >
     </h1>
@@ -72,6 +77,11 @@
               *ngIf="artist.photoUrl"
               src="{{ artist.photoUrl }}"
               alt="artist"
+            />
+            <img
+              *ngIf="artist.photoUrl === ''"
+              src="http://via.placeholder.com/300x360"
+              alt="a placeholder photo"
             />
           </div>
         </div>
