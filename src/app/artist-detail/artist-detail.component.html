@@ -32,25 +32,3 @@
   </div>
 </div>
 <app-messages></app-messages>
-
-<!-- <div *ngIf="albums">
-  <h2>You have the following albums for this artist:</h2>
-  <ul *ngFor="let album of albums">
-    <li *ngIf="album.artistId === artist._id">{{ album.title }}</li>
-  </ul>
-</div> -->
-
-<!-- <div *ngIf="artist">
-  <h2 class="title">{{ artist.name | uppercase }}</h2>
-  <div>title: {{ artist.name }}</div>
-  <div *ngIf="artist.deathDate">Birthdate: {{ artist.birthdate | date }}</div>
-  <div>Deathdate: {{ artist.deathDate | date }}</div>
-  <div>PhotoURL: {{ artist.photoUrl }}</div>
-  <div>artistId: {{ artist._id }}</div>
-  <button (click)="goBack()">go back</button>
-  <app-artist-form-reactive
-    [action]="'update'"
-    [artist]="artist"
-  ></app-artist-form-reactive>
-</div>
- -->

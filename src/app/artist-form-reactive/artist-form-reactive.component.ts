@@ -57,7 +57,6 @@ export class ArtistFormReactiveComponent implements OnInit {
     this.artistService
       .updateArtist({ ...this.artist, ...artist })
       .subscribe((artist) => (this.artist = { ...this.artist, ...artist }));
-    //this.location.back();
   }
 
   createArtist(artist: Artist): void {
@@ -77,7 +76,7 @@ export class ArtistFormReactiveComponent implements OnInit {
       case 'create':
         this.createArtist(this.myForm.value);
         this.submitted = true;
-        this.location.back();
+
         break;
       default:
         break;

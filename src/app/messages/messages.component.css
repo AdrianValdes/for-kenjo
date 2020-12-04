@@ -1,3 +1,13 @@
+.messages-wrapper {
+  display: flex;
+
+  width: 500px;
+  margin: 1rem auto;
+}
 .error {
   color: crimson;
+}
+.clear {
+  margin: 0 0.5rem;
+  height: 4rem;
 }

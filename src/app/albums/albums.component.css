@@ -4,7 +4,7 @@
   display: grid;
   grid-gap: 10px;
 }
-/* Handle cases with not grid */
+/* Handle when grid is not available  */
 .wrapper {
   display: flex;
   flex-wrap: wrap;

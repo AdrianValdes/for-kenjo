@@ -1,38 +1,41 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Artist} from "../model/artist"
-import {ArtistService} from "../services/artist.service"
+import { Component, OnInit } from '@angular/core';
+import { Artist } from '../model/artist';
+import { ArtistService } from '../services/artist.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import {AlbumService} from "../services/album.service"
+import { AlbumService } from '../services/album.service';
 import { Album } from '../model/album';
 @Component({
   selector: 'app-artist-detail',
   templateUrl: './artist-detail.component.html',
-  styleUrls: ['./artist-detail.component.css']
+  styleUrls: ['./artist-detail.component.css'],
 })
 export class ArtistDetailComponent implements OnInit {
- artist: Artist;
- albums: Album[]
-  constructor(private route: ActivatedRoute,
-  private artistService: ArtistService,
-  private location: Location, private albumService: AlbumService) { }
+  artist: Artist;
+  albums: Album[];
+  constructor(
+    private route: ActivatedRoute,
+    private artistService: ArtistService,
+    private location: Location,
+    private albumService: AlbumService
+  ) {}
 
   ngOnInit(): void {
     this.getArtist();
-    this.getAlbums()
+    this.getAlbums();
   }
   getArtist(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.artistService.getArtist(id)
-    .subscribe(artist => this.artist = artist);
+    this.artistService
+      .getArtist(id)
+      .subscribe((artist) => (this.artist = artist));
   }
   goBack(): void {
     this.location.back();
   }
 
   //Handeling connection between Artists an albums
-   getAlbums(): void {
-    this.albumService.getAlbums()
-    .subscribe(albums => this.albums = albums);
+  getAlbums(): void {
+    this.albumService.getAlbums().subscribe((albums) => (this.albums = albums));
   }
 }

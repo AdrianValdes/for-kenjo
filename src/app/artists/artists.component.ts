@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Artist } from '../model/artist';
-import { MessageService } from '../services/message.service';
 
 import { ArtistService } from '../services/artist.service';
 
@@ -11,10 +10,7 @@ import { ArtistService } from '../services/artist.service';
 })
 export class ArtistsComponent implements OnInit {
   artists: Artist[];
-  constructor(
-    private artistService: ArtistService,
-    private messageService: MessageService
-  ) {}
+  constructor(private artistService: ArtistService) {}
 
   ngOnInit(): void {
     this.getArtists();

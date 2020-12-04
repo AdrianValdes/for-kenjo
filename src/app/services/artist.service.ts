@@ -57,7 +57,6 @@ export class ArtistService {
 
   addArtist(artist: Artist): Observable<Artist> {
     const url = `${this.ROOT_URL}/artist`;
-    console.log('from addArtist', artist);
 
     return this.http.post<Artist>(url, artist, this.httpOptions).pipe(
       tap((newArtist: Artist) =>

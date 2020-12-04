@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Album } from '../model/album';
-import { MessageService } from '../services/message.service';
+
 import { AlbumService } from '../services/album.service';
 
 @Component({
@@ -13,10 +13,7 @@ export class AlbumsComponent implements OnInit {
   userForm: FormGroup;
   albums: Album[];
 
-  constructor(
-    private albumService: AlbumService,
-    private messageService: MessageService
-  ) {}
+  constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
     this.getAlbums();
