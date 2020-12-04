@@ -4,6 +4,11 @@
     <div>title: {{ album.title }}</div>
     <div>genre: {{ album.genre }}</div>
     <div>year: {{ album.year }}</div>
+    <div>
+      <p>coverUrl: {{ album.coverUrl }}</p>
+      <img src="{{ album.coverUrl }}" alt="" />
+    </div>
+
     <div>artistId: {{ album.artistId }}</div>
     <div *ngFor="let artist of artists">
       <h4 *ngIf="artist._id === album.artistId">
