@@ -57,6 +57,23 @@ img {
 .card .button-delete {
   color: rgb(187, 37, 67);
 }
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 100%;
+}
+
+.form {
+  min-width: 350px;
+  max-width: 900px;
+  width: 100%;
+}
+
+.form-full-width {
+  width: 100%;
+}
+
 .form-wrapper .button-submit {
   background-color: #255825;
   color: white;
