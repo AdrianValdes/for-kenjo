@@ -1,9 +1,10 @@
 <h2 class="title">Your Artists</h2>
 
-<div class="wrapper">
+<div class="grid artists-list">
   <app-card-artist
     *ngFor="let artist of artists"
     [artist]="artist"
     (cardDeleted)="onCardDeleted($event)"
   ></app-card-artist>
+  <app-add-new-item route="/createArtist" element="artist"></app-add-new-item>
 </div>

@@ -34,6 +34,7 @@ import { CardArtistComponent } from './card-artist/card-artist.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { ArtistCreateComponent } from './artist-create/artist-create.component';
+import { AddNewItemComponent } from './add-new-item/add-new-item.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ArtistCreateComponent } from './artist-create/artist-create.component';
     AlbumCreateComponent,
     CardArtistComponent,
     ArtistCreateComponent,
+    AddNewItemComponent,
   ],
   imports: [
     BrowserModule,

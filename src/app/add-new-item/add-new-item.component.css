@@ -1,0 +1,25 @@
+.add-card-placeholder-container {
+  height: 100%;
+
+  position: relative;
+}
+.card {
+  height: 100%;
+
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.card img {
+  background-color: rgba(167, 164, 164, 0.37);
+}
+
+.add-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 72px;
+  width: 72px;
+  cursor: pointer;
+}

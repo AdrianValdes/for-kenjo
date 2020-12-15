@@ -1,44 +1,57 @@
 <main class="main-wrapper">
-  <div>
+  <div class="grid-container">
     <h1>
-      <a routerLink="/albums">to all albums</a
+      <a routerLink="/albums">visit all albums</a
       ><a routerLink="/albums" class="arrow-right-icon">
         <mat-icon>arrow_right_alt</mat-icon></a
       >
     </h1>
-    <div class="albums-artists-list">
-      <div class="dasboard-card" *ngFor="let album of albums">
-        <div class="img-wrapper">
-          <h4>
-            <a routerLink="/detail/{{ album._id }}">{{ album.title }}</a>
-          </h4>
-          <img *ngIf="album.coverUrl" src="{{ album.coverUrl }}" alt="album" />
-          <img
-            *ngIf="album.coverUrl === ''"
-            src="http://via.placeholder.com/300x360"
-            alt="a placeholder cover"
-          />
-        </div>
+    <div class="grid dashboard-list">
+      <div class="dashboard-card" *ngFor="let album of albums">
+        <a routerLink="/detail/{{ album._id }}">
+          <div>
+            <h2 class="title">
+              {{ album.title }}
+            </h2>
+          </div>
+          <div class="image-wrapper">
+            <img
+              *ngIf="album.coverUrl"
+              src="{{ album.coverUrl }}"
+              alt="album"
+            />
+            <img
+              *ngIf="album.coverUrl === ''"
+              src="http://via.placeholder.com/300x360"
+              alt="a placeholder cover"
+            />
+          </div>
+          <div class="edit-details-card">
+            Got the artist album or to edit the album
+          </div>
+          <div class="color-overlay"></div>
+        </a>
       </div>
+      <app-add-new-item route="/createAlbum" element="album"></app-add-new-item>
     </div>
   </div>
 
-  <div>
+  <div class="grid-container">
     <h1>
-      <a routerLink="/artists">to all artists</a
+      <a routerLink="/artists">visit all artists</a
       ><a routerLink="/artists" class="arrow-right-icon">
         <mat-icon>arrow_right_alt</mat-icon></a
       >
     </h1>
-    <div class="albums-artists-list">
-      <div *ngFor="let artist of artists">
-        <div>
-          <div class="img-wrapper">
-            <h4>
-              <a routerLink="/detailArtist/{{ artist._id }}">{{
-                artist.name
-              }}</a>
-            </h4>
+    <div class="grid dashboard-list">
+      <div class="dashboard-card" *ngFor="let artist of artists">
+        <a routerLink="/detailArtist/{{ artist._id }}">
+          <div class="title">
+            <h2>
+              {{ artist.name }}
+            </h2>
+          </div>
+          <div class="image-wrapper">
             <img
               *ngIf="artist.photoUrl"
               src="{{ artist.photoUrl }}"
@@ -50,8 +63,17 @@
               alt="a placeholder photo"
             />
           </div>
-        </div>
+          <div class="edit-details-card">
+            Got the artist detail or to edit the artist
+          </div>
+          <div class="color-overlay"></div>
+        </a>
       </div>
+
+      <app-add-new-item
+        route="/createArtist"
+        element="artist"
+      ></app-add-new-item>
     </div>
   </div>
 </main>

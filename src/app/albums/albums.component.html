@@ -1,9 +1,10 @@
 <h2 class="title">Your Albums</h2>
 
-<div class="wrapper">
+<div class="grid albums-list">
   <app-card
     *ngFor="let album of albums"
     [album]="album"
     (cardDeleted)="onCardDeleted($event)"
   ></app-card>
+  <app-add-new-item route="/createAlbum" element="album"></app-add-new-item>
 </div>
