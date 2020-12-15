@@ -1,21 +1,14 @@
 .card {
-  max-width: 200px;
+  max-width: 220px;
+}
+.card .artist-header {
+  height: 5rem;
 }
 
-.artist-title:hover {
+.card .artist-title:hover {
   color: #164416;
 }
 
 img {
-  display: block;
   height: 250px;
-}
-.btn-edit {
-  color: #164416;
-}
-.btn-edit:hover {
-  color: #569656;
-}
-.btn-delete {
-  color: rgb(187, 37, 67);
 }

@@ -7,7 +7,7 @@
       >
     </h1>
     <div class="albums-artists-list">
-      <div *ngFor="let album of albums">
+      <div class="dasboard-card" *ngFor="let album of albums">
         <div class="img-wrapper">
           <h4>
             <a routerLink="/detail/{{ album._id }}">{{ album.title }}</a>
@@ -25,7 +25,7 @@
 
   <div>
     <h1>
-      <a routerLink="/artists">see all artists</a
+      <a routerLink="/artists">to all artists</a
       ><a routerLink="/artists" class="arrow-right-icon">
         <mat-icon>arrow_right_alt</mat-icon></a
       >

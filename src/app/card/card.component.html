@@ -1,5 +1,5 @@
 <mat-card class="card">
-  <mat-card-header>
+  <mat-card-header class="album-header">
     <mat-card-title
       ><a class="album-title" routerLink="/detail/{{ album._id }}">{{
         album.title
@@ -26,10 +26,12 @@
       mat-button
       routerLink="/detail/{{ album._id }}"
       mat-button
-      class="btn-edit"
+      class="button-edit"
     >
       EDIT
     </a>
-    <button mat-button class="btn-delete" (click)="deleteCard()">DELETE</button>
+    <button mat-button class="button-delete" (click)="deleteCard()">
+      DELETE
+    </button>
   </mat-card-actions>
 </mat-card>

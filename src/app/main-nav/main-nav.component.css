@@ -14,7 +14,6 @@ mat-toolbar .nav-link {
 }
 .logo {
   width: 80px;
-  display: block;
 }
 .navbar a:hover {
   color: #164416;

@@ -31,3 +31,40 @@ li {
 .title {
   text-align: center;
 }
+.title .arrow-left-icon {
+  position: relative;
+  top: 0.4rem;
+  left: -1rem;
+}
+img {
+  display: block;
+}
+.card .button-edit {
+  color: #164416;
+}
+.card .button-edit:hover {
+  color: #569656;
+}
+.card .button-delete {
+  color: rgb(187, 37, 67);
+}
+.form-wrapper .button-submit {
+  background-color: #0d290d;
+  color: white;
+  display: block;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.form-wrapper .button-submit:hover {
+  background-color: #193d19;
+}
+.add-form-container {
+  position: relative;
+  max-width: 1200px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}

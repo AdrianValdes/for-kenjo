@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline" class="form-full-width">
       <mat-label>Name</mat-label>
       <input
@@ -46,7 +46,7 @@
     <br />
     <button
       mat-flat-button
-      class="btn-submit"
+      class="button-submit"
       type="submit"
       [disabled]="!myForm.valid"
     >

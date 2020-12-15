@@ -1,10 +1,10 @@
-<h1 class="title">
-  <a class="arrow-left-icon" (click)="goBack()">
-    <mat-icon>keyboard_backspace</mat-icon></a
-  >artist details
-</h1>
-<div class="main">
-  <div *ngIf="artist" class="card-form-wrapper">
+<section class="artist-detail-container">
+  <h1 class="title">
+    <a class="arrow-left-icon" (click)="goBack()">
+      <mat-icon>keyboard_backspace</mat-icon></a
+    >Artist Details
+  </h1>
+  <div *ngIf="artist" class="main">
     <div class="img-wrapper">
       <img *ngIf="artist.photoUrl" src="{{ artist.photoUrl }}" alt="" />
       <img
@@ -13,22 +13,20 @@
         alt="a placeholder photo"
       />
     </div>
-    <div>
-      <h2>Details</h2>
-      <p>title: {{ artist.name }}</p>
-      <p>year: {{ artist.birthdate }}</p>
-      <p>year: {{ artist.deathDate }}</p>
-      <p>coverUrl: {{ artist.photoUrl }}</p>
-      <p>artistId: {{ artist._id }}</p>
-      <h2>Artist's albums:</h2>
-      <ul *ngFor="let album of albums">
-        <li *ngIf="album.artistId === artist._id">{{ album.title }}</li>
-      </ul>
-    </div>
+
     <app-artist-form-reactive
       [artist]="artist"
       [action]="'update'"
     ></app-artist-form-reactive>
+
+    <div class="artists-albums-container">
+      <h2>Artist's albums:</h2>
+      <ul *ngFor="let album of albums">
+        <li *ngIf="album.artistId === artist._id">
+          {{ album.title }}
+        </li>
+      </ul>
+    </div>
   </div>
-</div>
-<app-messages></app-messages>
+  <!-- <app-messages></app-messages> -->
+</section>
