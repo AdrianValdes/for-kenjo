@@ -8,12 +8,12 @@ export class MessageService {
   errors: string[] = [];
 
   addError(error: string) {
-    this.errors.push(error);
+    this.errors = [error];
   }
 
   add(message: string) {
-    this.messages.push(message);
-    console.log('message from message', message);
+    /*  this.messages.push(message);
+    console.log('message from message', message); */
   }
 
   clear() {

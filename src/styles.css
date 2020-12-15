@@ -83,7 +83,7 @@ img {
   bottom: 0;
   right: 0;
 }
-.form-wrapper .button-submit:hover {
+.button-submit:hover {
   background-color: #193d19;
 }
 .add-form-container {
@@ -104,4 +104,11 @@ img {
 }
 .card .card-header {
   height: 7rem;
+}
+
+.message-error {
+  color: rgb(221, 9, 51);
+}
+.message-success {
+  color: #569656;
 }

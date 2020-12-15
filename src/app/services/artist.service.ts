@@ -26,7 +26,7 @@ export class ArtistService {
   getArtists(): Observable<Artist[]> {
     const url = `${this.ROOT_URL}/artists/all`;
     return this.http.get<Artist[]>(url).pipe(
-      tap((_) => this.log('fetched artists')),
+      tap((_) => {}),
       catchError(this.handleError<Artist[]>('getArtists', []))
     );
   }
@@ -38,7 +38,7 @@ export class ArtistService {
     //TODO: SHOW 404 in case of error
 
     return this.http.get<Artist>(url).pipe(
-      tap((_) => this.log(`fetched artist id=${id}`)),
+      tap((_) => {}),
       catchError(this.handleError<Artist>(`getArtist id=${id}`))
     );
   }
@@ -49,7 +49,7 @@ export class ArtistService {
     const url = `${this.ROOT_URL}/artist/${artist._id}`;
 
     return this.http.put(url, artist, this.httpOptions).pipe(
-      tap((_) => this.log(`updated artist id=${artist._id}`)),
+      tap((_) => this.clearMessageError()),
       catchError(this.handleError<any>('updateArtist'))
     );
   }
@@ -62,6 +62,7 @@ export class ArtistService {
       tap((newArtist: Artist) =>
         this.log(`added artist w/ id=${newArtist._id}`)
       ),
+      tap((_) => this.clearMessageError()),
       catchError(this.handleError<Artist>('addArtist'))
     );
   }
@@ -99,13 +100,18 @@ export class ArtistService {
     this.messageService.add(`ArtistService: ${message}`);
   }
 
-  private logError(error: any) {
-    this.messageService.addError(` ${error.message}`);
-    this.analizeError(error.error);
-  }
   private analizeError(error: any) {
     if (error.error.includes('MongoError: E11000')) {
-      this.messageService.addError(`The name already exists`);
+      this.messageService.addError(
+        `The name already exists in the data base. Try another name`
+      );
     }
+  }
+  private logError(error: any) {
+    /*  this.messageService.addError(` ${error.message}`); */
+    this.analizeError(error.error);
+  }
+  private clearMessageError() {
+    this.messageService.clear();
   }
 }

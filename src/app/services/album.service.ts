@@ -51,6 +51,7 @@ export class AlbumService {
 
     return this.http.put(url, album, this.httpOptions).pipe(
       tap((_) => this.log(`updated album id=${album._id}`)),
+      tap((_) => this.clearMessageError()),
       catchError(this.handleError<any>('updateAlbum'))
     );
   }
@@ -58,8 +59,10 @@ export class AlbumService {
 
   addAlbum(album: Album): Observable<Album> {
     const url = `${this.ROOT_URL}/album`;
+
     return this.http.post<Album>(url, album, this.httpOptions).pipe(
       tap((newAlbum: Album) => this.log(`added album w/ id=${newAlbum._id}`)),
+      tap((_) => this.clearMessageError()),
       catchError(this.handleError<Album>('addAlbum'))
     );
   }
@@ -67,6 +70,7 @@ export class AlbumService {
     const url = `${this.ROOT_URL}/album/${id}`;
     return this.http.delete<Album>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted album id=${id}`)),
+
       catchError(this.handleError<Album>('deleteAlbum'))
     );
   }
@@ -82,7 +86,7 @@ export class AlbumService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.logError(`${operation} failed: ${error}`);
+      this.logError(error);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -93,8 +97,19 @@ export class AlbumService {
   private log(message: string) {
     this.messageService.add(`AlbumService: ${message}`);
   }
+  private analizeError(error: any) {
+    console.log(error);
 
+    if (error.error.includes('MongoError: E11000')) {
+      this.messageService.addError(
+        `The title already exists in the data base. Try another title`
+      );
+    }
+  }
   private logError(error: any) {
-    this.messageService.addError(` ${error.message}`);
+    this.analizeError(error.error);
+  }
+  private clearMessageError() {
+    this.messageService.clear();
   }
 }

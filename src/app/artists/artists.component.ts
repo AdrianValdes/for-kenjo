@@ -12,7 +12,7 @@ export class ArtistsComponent implements OnInit {
   artists: Artist[];
   constructor(private artistService: ArtistService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getArtists();
   }
 

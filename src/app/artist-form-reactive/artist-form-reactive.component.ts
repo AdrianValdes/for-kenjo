@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./artist-form-reactive.component.css'],
 })
 export class ArtistFormReactiveComponent implements OnInit {
-  myForm: FormGroup;
+  artistForm: FormGroup;
   submitted = false;
   minDate: Date;
   maxDate: Date;
@@ -29,7 +29,7 @@ export class ArtistFormReactiveComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.myForm = this.fb.group({
+    this.artistForm = this.fb.group({
       name: ['', [Validators.required]],
       birthdate: '',
       deathDate: '',
@@ -42,7 +42,7 @@ export class ArtistFormReactiveComponent implements OnInit {
   }
 
   fillArtistData() {
-    this.myForm.patchValue({
+    this.artistForm.patchValue({
       name: this.artist.name,
       birthdate: this.artist.birthdate,
       deathDate: this.artist.deathDate,
@@ -65,18 +65,18 @@ export class ArtistFormReactiveComponent implements OnInit {
     }
     this.artistService.addArtist(artist).subscribe();
   }
-
+  goBack(): void {
+    this.location.back();
+  }
   onSubmit() {
     switch (this.action) {
       case 'update':
-        this.updateArtist(this.myForm.value);
+        this.updateArtist(this.artistForm.value);
         this.submitted = true;
-        this.location.back();
         break;
       case 'create':
-        this.createArtist(this.myForm.value);
+        this.createArtist(this.artistForm.value);
         this.submitted = true;
-
         break;
       default:
         break;
@@ -84,6 +84,10 @@ export class ArtistFormReactiveComponent implements OnInit {
   }
 
   get birthdate() {
-    return this.myForm.get('birthdate');
+    return this.artistForm.get('birthdate');
+  }
+
+  get artistFormControl() {
+    return this.artistForm.controls;
   }
 }

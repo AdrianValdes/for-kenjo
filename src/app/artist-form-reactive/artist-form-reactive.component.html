@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="artistForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline" class="form-full-width">
       <mat-label>Name</mat-label>
       <input
@@ -8,32 +8,75 @@
         formControlName="name"
       />
     </mat-form-field>
+    <span
+      class="message-error"
+      *ngIf="
+        (artistFormControl.name.touched || submitted) &&
+        artistFormControl.name.errors?.required
+      "
+    >
+      Name is required
+    </span>
+
     <br />
-    <mat-form-field class="form-full-width" appearance="outline">
+    <mat-form-field
+      hintLabel="Min year 1909, max year 2030"
+      class="form-full-width"
+      appearance="outline"
+    >
       <mat-label>Birthday or day of founding</mat-label>
       <input
         matInput
         formControlName="birthdate"
         [min]="minDate"
         [max]="maxDate"
-        [matDatepicker]="picker1"
+        [matDatepicker]="pickerBirthday"
       />
-      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-      <mat-datepicker #picker1></mat-datepicker>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerBirthday"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerBirthday></mat-datepicker>
+      <mat-error
+        *ngIf="artistFormControl.birthdate.hasError('matDatepickerMin')"
+      >
+        Invalid min date.
+      </mat-error>
+      <mat-error
+        *ngIf="artistFormControl.birthdate.hasError('matDatepickerMax')"
+      >
+        Invalid maximum date.
+      </mat-error>
     </mat-form-field>
-
     <br />
-    <mat-form-field class="form-full-width" appearance="outline">
+    <mat-form-field
+      hintLabel="Min year 1909, max year 2030"
+      class="form-full-width"
+      appearance="outline"
+    >
       <mat-label>Death date or band split up</mat-label>
       <input
         matInput
         formControlName="deathDate"
         [min]="minDate"
         [max]="maxDate"
-        [matDatepicker]="picker2"
+        [matDatepicker]="pickerDeathDate"
       />
-      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerDeathDate"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerDeathDate></mat-datepicker>
+      <mat-error
+        *ngIf="artistFormControl.deathDate.hasError('matDatepickerMin')"
+      >
+        Invalid min date.
+      </mat-error>
+      <mat-error
+        *ngIf="artistFormControl.deathDate.hasError('matDatepickerMax')"
+      >
+        Invalid maximum date.
+      </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline" class="form-full-width">
       <mat-label>Photo URL</mat-label>
@@ -48,7 +91,7 @@
       mat-flat-button
       class="button-submit"
       type="submit"
-      [disabled]="!myForm.valid"
+      [disabled]="!artistForm.valid"
     >
       Submit
     </button>

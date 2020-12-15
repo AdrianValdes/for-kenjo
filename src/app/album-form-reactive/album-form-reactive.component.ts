@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./album-form-reactive.component.css'],
 })
 export class AlbumFormReactiveComponent implements OnInit {
-  myForm: FormGroup;
+  albumForm: FormGroup;
   submitted = false;
   @Input() album: Album;
   @Input() action: string;
@@ -23,7 +23,7 @@ export class AlbumFormReactiveComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.myForm = this.fb.group({
+    this.albumForm = this.fb.group({
       title: ['', [Validators.required]],
       genre: '',
       year: [
@@ -36,6 +36,15 @@ export class AlbumFormReactiveComponent implements OnInit {
     if (this.album) {
       this.fillAlbum();
     }
+  }
+
+  fillAlbum() {
+    this.albumForm.patchValue({
+      title: this.album.title,
+      genre: this.album.genre,
+      year: this.album.year,
+      coverUrl: this.album.coverUrl,
+    });
   }
 
   updateAlbum(album: Album): void {
@@ -57,29 +66,18 @@ export class AlbumFormReactiveComponent implements OnInit {
   onSubmit() {
     switch (this.action) {
       case 'update':
-        this.updateAlbum(this.myForm.value);
+        this.updateAlbum(this.albumForm.value);
         this.submitted = true;
-        this.location.back();
         break;
       case 'create':
-        this.createAlbum(this.myForm.value);
+        this.createAlbum(this.albumForm.value);
         this.submitted = true;
-        this.location.back();
       default:
         break;
     }
   }
 
   get year() {
-    return this.myForm.get('year');
-  }
-
-  fillAlbum() {
-    this.myForm.patchValue({
-      title: this.album.title,
-      genre: this.album.genre,
-      year: this.album.year,
-      coverUrl: this.album.coverUrl,
-    });
+    return this.albumForm.get('year');
   }
 }

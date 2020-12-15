@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <form class="form" [formGroup]="albumForm" (ngSubmit)="onSubmit()">
     <mat-form-field appearance="outline" class="form-full-width">
       <mat-label>Title</mat-label>
       <input
@@ -21,6 +21,8 @@
         placeholder="year when the album was published"
         formControlName="year"
       />
+      <mat-error *ngIf="year.hasError('min')">Invalid minimum date.</mat-error>
+      <mat-error *ngIf="year.hasError('max')">Invalid maximum date. </mat-error>
     </mat-form-field>
     <br />
     <mat-form-field appearance="outline" class="form-full-width">
@@ -45,7 +47,7 @@
       mat-flat-button
       class="button-submit"
       type="submit"
-      [disabled]="!myForm.valid"
+      [disabled]="!albumForm.valid"
     >
       Submit
     </button>

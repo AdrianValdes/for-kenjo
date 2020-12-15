@@ -3,16 +3,19 @@
   *ngIf="messageService.messages.length || messageService.errors.length"
 >
   <div class="success-wrapper" *ngIf="messageService.messages.length">
-    <div class="message" *ngFor="let messages of messageService.messages">
+    <div
+      class="message-success"
+      *ngFor="let messages of messageService.messages"
+    >
       {{ messages }}
     </div>
   </div>
   <div class="errors-wrapper" *ngIf="messageService.errors.length">
-    <div class="error" *ngFor="let error of messageService.errors">
+    <div class="message-error" *ngFor="let error of messageService.errors">
       {{ error }}
     </div>
   </div>
-  <button mat-stroked-button class="clear" (click)="messageService.clear()">
+  <!--  <button mat-stroked-button class="clear" (click)="messageService.clear()">
     clear
-  </button>
+  </button> -->
 </div>
