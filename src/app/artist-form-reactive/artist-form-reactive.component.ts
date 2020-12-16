@@ -15,6 +15,8 @@ export class ArtistFormReactiveComponent implements OnInit {
   submitted = false;
   minDate: Date;
   maxDate: Date;
+  error: string;
+  success: string;
   @Input() artist: Artist;
   @Input() action: string;
 
@@ -54,16 +56,38 @@ export class ArtistFormReactiveComponent implements OnInit {
     if (!artist) {
       return;
     }
-    this.artistService
-      .updateArtist({ ...this.artist, ...artist })
-      .subscribe((artist) => (this.artist = { ...this.artist, ...artist }));
+    this.artistService.updateArtist({ ...this.artist, ...artist }).subscribe(
+      (artist) => (this.artist = { ...this.artist, ...artist }),
+      (error) => {
+        console.log(error);
+        this.error = error;
+      },
+      () => {
+        this.success = `Operation success!`;
+        this.error = '';
+        console.log('Observer got a complete notification');
+        this.location.back();
+      }
+    );
   }
 
   createArtist(artist: Artist): void {
     if (!artist) {
       return;
     }
-    this.artistService.addArtist(artist).subscribe();
+    this.artistService.addArtist(artist).subscribe(
+      () => {},
+      (error) => {
+        console.log(error);
+        this.error = error;
+      },
+      () => {
+        this.success = `Operation success!`;
+        this.error = '';
+        console.log('Observer got a complete notification');
+        this.location.back();
+      }
+    );
   }
   goBack(): void {
     this.location.back();

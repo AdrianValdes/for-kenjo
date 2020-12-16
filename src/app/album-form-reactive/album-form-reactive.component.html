@@ -51,5 +51,7 @@
     >
       Submit
     </button>
+    <div class="message-error" *ngIf="error">{{ error }}</div>
+    <div *ngIf="success">{{ success }}</div>
   </form>
 </div>

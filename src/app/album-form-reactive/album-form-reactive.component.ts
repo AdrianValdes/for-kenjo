@@ -13,6 +13,8 @@ import { Location } from '@angular/common';
 export class AlbumFormReactiveComponent implements OnInit {
   albumForm: FormGroup;
   submitted = false;
+  error: string;
+  success: string;
   @Input() album: Album;
   @Input() action: string;
 
@@ -52,15 +54,37 @@ export class AlbumFormReactiveComponent implements OnInit {
       return;
     }
 
-    this.albumService
-      .updateAlbum({ ...this.album, ...album })
-      .subscribe((album) => (this.album = { ...this.album, ...album }));
+    this.albumService.updateAlbum({ ...this.album, ...album }).subscribe(
+      (album: Album) => (this.album = { ...this.album, ...album }),
+      (error) => {
+        console.log(error);
+        this.error = error;
+      },
+      () => {
+        this.success = `Operation success!`;
+        this.error = '';
+        console.log('Observer got a complete notification');
+        this.location.back();
+      }
+    );
   }
+
   createAlbum(album: Album): void {
     if (!album) {
       return;
     }
-    this.albumService.addAlbum(album).subscribe();
+    this.albumService.addAlbum(album).subscribe(
+      () => {},
+      (error) => {
+        console.log(error);
+        this.error = error;
+      },
+      () => {
+        this.success = `Operation success!`;
+        this.error = '';
+        this.location.back();
+      }
+    );
   }
 
   onSubmit() {

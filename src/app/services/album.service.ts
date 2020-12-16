@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Album } from '../model/album';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { MessageService } from './message.service';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -23,7 +23,6 @@ export class AlbumService {
     }),
   };
 
-  /** Get albums from the server */
   getAlbums(): Observable<Album[]> {
     const url = `${this.ROOT_URL}/albums/all`;
     return this.http.get<Album[]>(url).pipe(
@@ -32,11 +31,8 @@ export class AlbumService {
     );
   }
 
-  /** Get album by id */
   getAlbum(id: string): Observable<Album> {
     const url = `${this.ROOT_URL}/album/${id}`;
-
-    //TODO: SHOW 404 in case of error
 
     return this.http.get<Album>(url).pipe(
       tap((_) => this.log(`fetched album id=${id}`)),
@@ -44,8 +40,6 @@ export class AlbumService {
     );
   }
 
-  /******* SAVE METHODS ********/
-  /** PUT: update the album on the server */
   updateAlbum(album: Album): Observable<any> {
     const url = `${this.ROOT_URL}/album/${album._id}`;
 
@@ -55,7 +49,6 @@ export class AlbumService {
       catchError(this.handleError<any>('updateAlbum'))
     );
   }
-  /** POST: add a new album to the server */
 
   addAlbum(album: Album): Observable<Album> {
     const url = `${this.ROOT_URL}/album`;
@@ -66,6 +59,7 @@ export class AlbumService {
       catchError(this.handleError<Album>('addAlbum'))
     );
   }
+
   deleteAlbum(id: string) {
     const url = `${this.ROOT_URL}/album/${id}`;
     return this.http.delete<Album>(url, this.httpOptions).pipe(
@@ -82,14 +76,21 @@ export class AlbumService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      let errorMessage = '';
 
-      // TODO: better job of transforming error for user consumption
+      if (error.error instanceof ErrorEvent) {
+        // client-side error
+        errorMessage = `Error: ${error.error.message}`;
+      } else if (error.error.error.includes('MongoError: E11000')) {
+        errorMessage = `The title already exists in the data base. Try another title`;
+      } else {
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
+
+      // console.error(error);
       this.logError(error);
 
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return throwError(errorMessage);
     };
   }
 
@@ -98,8 +99,6 @@ export class AlbumService {
     this.messageService.add(`AlbumService: ${message}`);
   }
   private analizeError(error: any) {
-    console.log(error);
-
     if (error.error.includes('MongoError: E11000')) {
       this.messageService.addError(
         `The title already exists in the data base. Try another title`

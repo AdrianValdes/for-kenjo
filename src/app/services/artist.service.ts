@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Artist } from '../model/artist';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { MessageService } from './message.service';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
@@ -15,6 +15,7 @@ export class ArtistService {
     private http: HttpClient,
     private messageService: MessageService
   ) {}
+
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,7 +23,6 @@ export class ArtistService {
     }),
   };
 
-  /** Get artists from the server */
   getArtists(): Observable<Artist[]> {
     const url = `${this.ROOT_URL}/artists/all`;
     return this.http.get<Artist[]>(url).pipe(
@@ -31,11 +31,8 @@ export class ArtistService {
     );
   }
 
-  /** Get artist by id */
   getArtist(id: string): Observable<Artist> {
     const url = `${this.ROOT_URL}/artist/${id}`;
-
-    //TODO: SHOW 404 in case of error
 
     return this.http.get<Artist>(url).pipe(
       tap((_) => {}),
@@ -43,8 +40,6 @@ export class ArtistService {
     );
   }
 
-  /******* SAVE METHODS ********/
-  /** PUT: update an artist on the server */
   updateArtist(artist: Artist): Observable<any> {
     const url = `${this.ROOT_URL}/artist/${artist._id}`;
 
@@ -53,7 +48,6 @@ export class ArtistService {
       catchError(this.handleError<any>('updateArtist'))
     );
   }
-  /** POST: add a new artist to the server */
 
   addArtist(artist: Artist): Observable<Artist> {
     const url = `${this.ROOT_URL}/artist`;
@@ -67,7 +61,6 @@ export class ArtistService {
     );
   }
 
-  //Delete artist from the server
   deleteArtist(id: string) {
     const url = `${this.ROOT_URL}/artist/${id}`;
     return this.http.delete<Artist>(url, this.httpOptions).pipe(
@@ -84,14 +77,21 @@ export class ArtistService {
    */
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      let errorMessage = '';
 
-      // TODO: better job of transforming error for user consumption
+      if (error.error instanceof ErrorEvent) {
+        // client-side error
+        errorMessage = `Error: ${error.error.message}`;
+      } else if (error.error.error.includes('MongoError: E11000')) {
+        errorMessage = `The title already exists in the data base. Try another title`;
+      } else {
+        errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      }
+
+      // console.error(error);
       this.logError(error);
 
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
+      return throwError(errorMessage);
     };
   }
 
