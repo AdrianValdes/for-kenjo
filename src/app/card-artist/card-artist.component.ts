@@ -12,6 +12,7 @@ export class CardArtistComponent implements OnInit {
   constructor(public router: Router) {}
 
   ngOnInit(): void {}
+
   deleteCard() {
     this.cardDeleted.emit(this.artist._id);
   }

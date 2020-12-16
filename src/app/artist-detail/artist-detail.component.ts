@@ -35,12 +35,11 @@ export class ArtistDetailComponent implements OnInit {
       .subscribe((artist) => (this.artist = artist));
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
-  //Handeling connection between Artists an albums
   getAlbums(): void {
     this.albumService.getAlbums().subscribe((albums) => (this.albums = albums));
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Album } from '../model/album';
 import { Observable, throwError } from 'rxjs';
 import { MessageService } from './message.service';
 import { catchError, tap } from 'rxjs/operators';
-import { of } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -25,6 +25,7 @@ export class AlbumService {
 
   getAlbums(): Observable<Album[]> {
     const url = `${this.ROOT_URL}/albums/all`;
+
     return this.http.get<Album[]>(url).pipe(
       tap((_) => this.log('fetched albums')),
       catchError(this.handleError<Album[]>('getAlbums', []))
@@ -45,7 +46,6 @@ export class AlbumService {
 
     return this.http.put(url, album, this.httpOptions).pipe(
       tap((_) => this.log(`updated album id=${album._id}`)),
-      tap((_) => this.clearMessageError()),
       catchError(this.handleError<any>('updateAlbum'))
     );
   }
@@ -55,21 +55,20 @@ export class AlbumService {
 
     return this.http.post<Album>(url, album, this.httpOptions).pipe(
       tap((newAlbum: Album) => this.log(`added album w/ id=${newAlbum._id}`)),
-      tap((_) => this.clearMessageError()),
       catchError(this.handleError<Album>('addAlbum'))
     );
   }
 
   deleteAlbum(id: string) {
     const url = `${this.ROOT_URL}/album/${id}`;
+
     return this.http.delete<Album>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted album id=${id}`)),
-
       catchError(this.handleError<Album>('deleteAlbum'))
     );
   }
   /**
-   * Handling Http operations that could failed.
+   * TODO: Improve the handling operations scheme
    *
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
@@ -79,7 +78,6 @@ export class AlbumService {
       let errorMessage = '';
 
       if (error.error instanceof ErrorEvent) {
-        // client-side error
         errorMessage = `Error: ${error.error.message}`;
       } else if (error.error.error.includes('MongoError: E11000')) {
         errorMessage = `The title already exists in the data base. Try another title`;
@@ -87,7 +85,6 @@ export class AlbumService {
         errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
       }
 
-      // console.error(error);
       this.logError(error);
 
       return throwError(errorMessage);
@@ -98,6 +95,7 @@ export class AlbumService {
   private log(message: string) {
     this.messageService.add(`AlbumService: ${message}`);
   }
+
   private analizeError(error: any) {
     if (error.error.includes('MongoError: E11000')) {
       this.messageService.addError(
@@ -105,9 +103,11 @@ export class AlbumService {
       );
     }
   }
+
   private logError(error: any) {
     this.analizeError(error.error);
   }
+
   private clearMessageError() {
     this.messageService.clear();
   }

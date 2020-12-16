@@ -53,19 +53,10 @@ export class AlbumFormReactiveComponent implements OnInit {
     if (!album) {
       return;
     }
-
     this.albumService.updateAlbum({ ...this.album, ...album }).subscribe(
       (album: Album) => (this.album = { ...this.album, ...album }),
-      (error) => {
-        console.log(error);
-        this.error = error;
-      },
-      () => {
-        this.success = `Operation success!`;
-        this.error = '';
-        console.log('Observer got a complete notification');
-        this.location.back();
-      }
+      (error) => this.handleRequestError(error),
+      () => this.handleRequestSuccess()
     );
   }
 
@@ -75,27 +66,32 @@ export class AlbumFormReactiveComponent implements OnInit {
     }
     this.albumService.addAlbum(album).subscribe(
       () => {},
-      (error) => {
-        console.log(error);
-        this.error = error;
-      },
-      () => {
-        this.success = `Operation success!`;
-        this.error = '';
-        this.location.back();
-      }
+      (error) => this.handleRequestError(error),
+      () => this.handleRequestSuccess()
     );
+  }
+
+  handleRequestError(error: string) {
+    console.log(error);
+    this.error = error;
+  }
+
+  handleRequestSuccess() {
+    this.success = `Operation success!`;
+    this.error = '';
+    console.log('Observer got a complete notification');
+    this.submitted = true;
+    this.location.back();
   }
 
   onSubmit() {
     switch (this.action) {
       case 'update':
         this.updateAlbum(this.albumForm.value);
-        this.submitted = true;
         break;
       case 'create':
         this.createAlbum(this.albumForm.value);
-        this.submitted = true;
+        break;
       default:
         break;
     }

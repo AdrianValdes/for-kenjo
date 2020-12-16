@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 import { Location } from '@angular/common';
 import { Album } from '../model/album';
 import { Artist } from '../model/artist';
@@ -26,6 +25,7 @@ export class ArtistSearchComponent implements OnInit {
   ngOnInit(): void {
     this.getArtists();
   }
+
   getArtists(): void {
     this.artistService
       .getArtists()
@@ -36,7 +36,6 @@ export class ArtistSearchComponent implements OnInit {
     if (!query.trim()) {
       return (this.searchedArtists = []);
     }
-
     const regex = new RegExp(query, 'i');
     this.searchedArtists = this.artists.filter((artist) =>
       regex.test(artist.name)
@@ -45,7 +44,6 @@ export class ArtistSearchComponent implements OnInit {
 
   bindArtistToAlbum() {
     const artistId = this.searchedArtists[0]._id;
-
     this.albumService.updateAlbum({ ...this.album, artistId }).subscribe();
     this.location.back();
   }

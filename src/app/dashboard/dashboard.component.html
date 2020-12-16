@@ -10,7 +10,7 @@
       <div class="dashboard-card" *ngFor="let album of albums">
         <a routerLink="/detail/{{ album._id }}">
           <div>
-            <h2 class="title">
+            <h2 class="title-card">
               {{ album.title }}
             </h2>
           </div>
@@ -46,7 +46,7 @@
     <div class="grid dashboard-list">
       <div class="dashboard-card" *ngFor="let artist of artists">
         <a routerLink="/detailArtist/{{ artist._id }}">
-          <div class="title">
+          <div class="title-card">
             <h2>
               {{ artist.name }}
             </h2>

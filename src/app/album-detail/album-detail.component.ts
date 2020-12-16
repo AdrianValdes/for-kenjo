@@ -24,16 +24,16 @@ export class AlbumDetailComponent implements OnInit {
     this.getAlbum();
     this.getArtists();
   }
+
   getAlbum(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.albumService.getAlbum(id).subscribe((album) => (this.album = album));
   }
+
   goBack(): void {
     this.location.back();
   }
 
-  //Getting the albums to be able of performing a search by name to then link
-  //the album to an artist
   getArtists(): void {
     this.artistService
       .getArtists()

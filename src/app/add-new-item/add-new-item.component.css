@@ -1,11 +1,10 @@
 .add-card-placeholder-container {
   height: 100%;
-
   position: relative;
 }
+
 .card {
   height: 100%;
-
   cursor: pointer;
   border-radius: 20px;
 }

@@ -12,6 +12,7 @@ import { ArtistService } from '../services/artist.service';
 export class DashboardComponent implements OnInit {
   albums: Album[] = [];
   artists: Artist[] = [];
+
   constructor(
     private albumService: AlbumService,
     private artistService: ArtistService
@@ -27,6 +28,7 @@ export class DashboardComponent implements OnInit {
       .getAlbums()
       .subscribe((albums) => (this.albums = albums.slice(0, 4)));
   }
+
   getArtists(): void {
     this.artistService
       .getArtists()

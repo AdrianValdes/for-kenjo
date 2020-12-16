@@ -58,16 +58,8 @@ export class ArtistFormReactiveComponent implements OnInit {
     }
     this.artistService.updateArtist({ ...this.artist, ...artist }).subscribe(
       (artist) => (this.artist = { ...this.artist, ...artist }),
-      (error) => {
-        console.log(error);
-        this.error = error;
-      },
-      () => {
-        this.success = `Operation success!`;
-        this.error = '';
-        console.log('Observer got a complete notification');
-        this.location.back();
-      }
+      (error) => this.handleRequestError(error),
+      () => this.handleRequestSuccess()
     );
   }
 
@@ -77,38 +69,39 @@ export class ArtistFormReactiveComponent implements OnInit {
     }
     this.artistService.addArtist(artist).subscribe(
       () => {},
-      (error) => {
-        console.log(error);
-        this.error = error;
-      },
-      () => {
-        this.success = `Operation success!`;
-        this.error = '';
-        console.log('Observer got a complete notification');
-        this.location.back();
-      }
+      (error) => this.handleRequestError(error),
+      () => this.handleRequestSuccess()
     );
   }
-  goBack(): void {
+
+  handleRequestError(error: string) {
+    console.log(error);
+    this.error = error;
+  }
+
+  handleRequestSuccess() {
+    this.success = `Operation success!`;
+    this.error = '';
+    console.log('Observer got a complete notification');
+    this.submitted = true;
     this.location.back();
   }
+
   onSubmit() {
     switch (this.action) {
       case 'update':
         this.updateArtist(this.artistForm.value);
-        this.submitted = true;
         break;
       case 'create':
         this.createArtist(this.artistForm.value);
-        this.submitted = true;
         break;
       default:
         break;
     }
   }
 
-  get birthdate() {
-    return this.artistForm.get('birthdate');
+  goBack(): void {
+    this.location.back();
   }
 
   get artistFormControl() {

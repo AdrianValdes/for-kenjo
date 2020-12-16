@@ -26,7 +26,7 @@ export class ArtistService {
   getArtists(): Observable<Artist[]> {
     const url = `${this.ROOT_URL}/artists/all`;
     return this.http.get<Artist[]>(url).pipe(
-      tap((_) => {}),
+      tap((_) => this.log('fetched artists')),
       catchError(this.handleError<Artist[]>('getArtists', []))
     );
   }
@@ -35,7 +35,7 @@ export class ArtistService {
     const url = `${this.ROOT_URL}/artist/${id}`;
 
     return this.http.get<Artist>(url).pipe(
-      tap((_) => {}),
+      tap((_) => this.log(`fetched artist id=${id}`)),
       catchError(this.handleError<Artist>(`getArtist id=${id}`))
     );
   }
@@ -43,10 +43,9 @@ export class ArtistService {
   updateArtist(artist: Artist): Observable<any> {
     const url = `${this.ROOT_URL}/artist/${artist._id}`;
 
-    return this.http.put(url, artist, this.httpOptions).pipe(
-      tap((_) => this.clearMessageError()),
-      catchError(this.handleError<any>('updateArtist'))
-    );
+    return this.http
+      .put(url, artist, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('updateArtist')));
   }
 
   addArtist(artist: Artist): Observable<Artist> {
@@ -56,13 +55,13 @@ export class ArtistService {
       tap((newArtist: Artist) =>
         this.log(`added artist w/ id=${newArtist._id}`)
       ),
-      tap((_) => this.clearMessageError()),
       catchError(this.handleError<Artist>('addArtist'))
     );
   }
 
   deleteArtist(id: string) {
     const url = `${this.ROOT_URL}/artist/${id}`;
+
     return this.http.delete<Artist>(url, this.httpOptions).pipe(
       tap((_) => this.log(`deleted artist id=${id}`)),
       catchError(this.handleError<Artist>('deleteArtist'))
@@ -70,7 +69,7 @@ export class ArtistService {
   }
 
   /**
-   * Handling Http operations that could failed.
+   * TODO: Improve the handling operations scheme
    *
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
