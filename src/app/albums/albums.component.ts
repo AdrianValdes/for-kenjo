@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Album } from '../model/album';
-
+import { Location } from '@angular/common';
 import { AlbumService } from '../services/album.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class AlbumsComponent implements OnInit {
   userForm: FormGroup;
   albums: Album[];
 
-  constructor(private albumService: AlbumService) {}
+  constructor(private albumService: AlbumService, private location: Location) {}
 
   ngOnInit(): void {
     this.getAlbums();
@@ -30,5 +30,9 @@ export class AlbumsComponent implements OnInit {
 
   onCardDeleted(id: string) {
     this.delete(id);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

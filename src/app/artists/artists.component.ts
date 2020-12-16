@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Artist } from '../model/artist';
-
+import { Location } from '@angular/common';
 import { ArtistService } from '../services/artist.service';
 
 @Component({
@@ -10,7 +10,10 @@ import { ArtistService } from '../services/artist.service';
 })
 export class ArtistsComponent implements OnInit {
   artists: Artist[];
-  constructor(private artistService: ArtistService) {}
+  constructor(
+    private artistService: ArtistService,
+    private location: Location
+  ) {}
 
   ngOnInit() {
     this.getArtists();
@@ -26,7 +29,12 @@ export class ArtistsComponent implements OnInit {
     this.artists = this.artists.filter((artist) => artist._id !== id);
     this.artistService.deleteArtist(id).subscribe();
   }
+
   onCardDeleted(id: string) {
     this.delete(id);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
