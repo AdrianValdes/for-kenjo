@@ -1,3 +1,5 @@
 .button-match {
   background-color: seagreen;
+  color: white;
+  cursor: pointer;
 }

@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { AlbumService } from '../services/album.service';
 import { Album } from '../model/album';
-import { BehaviorSubject } from 'rxjs';
+
 @Component({
   selector: 'app-artist-detail',
   templateUrl: './artist-detail.component.html',

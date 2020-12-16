@@ -1,4 +1,5 @@
 <div>
+  <h4>Use the search field to assign an author for this album</h4>
   <mat-form-field class="example-full-width">
     <mat-label>Search an author</mat-label>
     <input
@@ -13,6 +14,10 @@
     <li *ngFor="let artist of searchedArtists">
       {{ artist.name }}
     </li>
+    <div *ngIf="searchedArtists.length === 0">
+      There is no artist with this name. Try another name or add the artist in
+      your database
+    </div>
     <button
       class="button-match"
       mat-flat-button

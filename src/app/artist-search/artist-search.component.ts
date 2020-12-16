@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-
+import { Location } from '@angular/common';
 import { Album } from '../model/album';
 import { Artist } from '../model/artist';
 import { ArtistService } from '../services/artist.service';
@@ -20,7 +19,8 @@ export class ArtistSearchComponent implements OnInit {
 
   constructor(
     private artistService: ArtistService,
-    private albumService: AlbumService
+    private albumService: AlbumService,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -34,10 +34,9 @@ export class ArtistSearchComponent implements OnInit {
 
   search(query: string) {
     if (!query.trim()) {
-      // if not search term, return empty  array.
       return (this.searchedArtists = []);
     }
-    //Making the search case insensitive
+
     const regex = new RegExp(query, 'i');
     this.searchedArtists = this.artists.filter((artist) =>
       regex.test(artist.name)
@@ -48,5 +47,6 @@ export class ArtistSearchComponent implements OnInit {
     const artistId = this.searchedArtists[0]._id;
 
     this.albumService.updateAlbum({ ...this.album, artistId }).subscribe();
+    this.location.back();
   }
 }
